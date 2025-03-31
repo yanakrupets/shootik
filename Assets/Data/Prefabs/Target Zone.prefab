@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703c6a7c3a9c99e459c381b02763a20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _landscapeItem: {fileID: 6240966167566967575}
-  _overlapCollider: {fileID: 8089577616949633029}
+  landscapeItem: {fileID: 0}
+  overlapCollider: {fileID: 0}
 --- !u!1 &4280447340614059106
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49122807, y: 0.03448276}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.78125, y: 0.90625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -205,5 +205,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b5b99a4f063a542a5dcaaa49ac61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 7825412514393512157}
-  _collider: {fileID: 8089577616949633029}
+  spriteRenderer: {fileID: 7825412514393512157}
+  polygonCollider: {fileID: 8089577616949633029}

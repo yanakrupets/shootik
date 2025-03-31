@@ -12,14 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c844b3519da554eb980c41b36fc84c, type: 3}
   m_Name: Position Data
   m_EditorClassIdentifier: 
-  _overlapPositions:
-  - OverlapType: 1
-    Y: -3.4
-  - OverlapType: 2
-    Y: -4.4
-  - OverlapType: 3
-    Y: -4.4
-  - OverlapType: 4
-    Y: -4.4
-  - OverlapType: 5
-    Y: -4.5
+  <OverlapPositions>k__BackingField: []

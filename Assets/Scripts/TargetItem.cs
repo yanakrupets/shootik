@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class TargetItem : ShootableItem
 {
-    [SerializeField] private Image _image;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    public void SetImage(Image image)
+    public void SetSprite(Sprite sprite)
     {
-        _image = image;
+        spriteRenderer.sprite = sprite;
     }
 }

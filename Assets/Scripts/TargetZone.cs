@@ -1,20 +1,25 @@
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class TargetZone : MonoBehaviour
+public class TargetZone : MonoBehaviour, ILandscapeItem
 {
-    [SerializeField] private LandscapeItem _landscapeItem;
-    [SerializeField] private PolygonCollider2D _overlapCollider;
-
-    public LandscapeItem LandscapeItem => _landscapeItem;
+    [SerializeField] private LandscapeItem landscapeItem;
     
     private List<TargetPlace> _targetPlaces;
 
-    public void Initialize(Vector2 position)
+    public void Initialize(
+        ColliderPathPoints[] landscapePaths, 
+        Sprite landscapeSprite, 
+        Vector2 position, 
+        string landscapeLayerName)
     {
         // set position
         // create SO for each overlap ( X random range + Y position )
         transform.position = position;
+        
+        landscapeItem.Initialize(landscapePaths, landscapeSprite, Vector2.zero, landscapeLayerName);
 
         // generate target places
         // create SO for places for each overlap

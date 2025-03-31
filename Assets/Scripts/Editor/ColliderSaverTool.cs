@@ -36,14 +36,10 @@ namespace Editor
                 .ObjectField("Sprite Renderer", _overlapSpriteRenderer, typeof(SpriteRenderer), true);
 
             if (GUILayout.Button("Save Collider Paths"))
-            {
                 SaveColliderPaths();
-            }
         
             if (GUILayout.Button("Update Collider"))
-            {
                 UpdateCollider();
-            }
         }
 
         private void SaveColliderPaths()
@@ -66,11 +62,11 @@ namespace Editor
                 return;
             }
 
-            var pathPoints = new List<ColliderPathPoints>();
+            var pathPoints = new ColliderPathPoints[_collider2D.pathCount];
             for (var i = 0; i < _collider2D.pathCount; i++)
             {
                 var points = new ColliderPathPoints(_collider2D.GetPath(i).ToArray());
-                pathPoints.Add(points);
+                pathPoints[i] = points;
             }
             
             var path = new ColliderPath(_overlapType, _collider2D.bounds.size.x, pathPoints);

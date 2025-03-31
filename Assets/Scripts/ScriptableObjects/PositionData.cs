@@ -1,27 +1,19 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace ScriptableObjects
 {
     [CreateAssetMenu(fileName = "Position Data", menuName = "Configs/Position Data")]
     public class PositionData : ScriptableObject
     {
-        [field: SerializeField] public List<OverlapPosition> OverlapPositions { get; private set; }
-
-        public OverlapPosition this[OverlapType overlapType]
+        [field: SerializeField] public OverlapPosition[] OverlapPositions { get; private set; }
+        
+        public bool TryGetValue(OverlapType overlapType, out OverlapPosition value)
         {
-            get { return OverlapPositions.FirstOrDefault(overlap => overlap.OverlapType == overlapType); }
+            value = OverlapPositions.SingleOrDefault(overlap => overlap.OverlapType == overlapType);
+            return value != null;
         }
-    }
-
-    [Serializable]
-    public class OverlapPosition
-    {
-        [field: SerializeField] public OverlapType OverlapType { get; private set; }
-        [field: SerializeField] public float Y { get; private set; }
     }
 }

@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ScriptableObjects
@@ -11,34 +9,24 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "Graphic Data", menuName = "Configs/Graphic Data")]
     public class GraphicData : ScriptableObject
     {
-        [SerializeField] private List<OverlapGraphic> overlapGraphics;
+        [SerializeField] private OverlapGraphic[] overlapGraphics;
         
-        [SerializeField] private List<Sprite> backgroundSprites;
-        [SerializeField] private List<Sprite> landscapeBackgroundSprites;
+        [SerializeField] private Sprite[] backgroundSprites;
+        [SerializeField] private Sprite[] landscapeBackgroundSprites;
 
-        public List<OverlapGraphic> GetOverlapGraphic(LandscapeLayer landscapeLayer)
-        {
-            return overlapGraphics
-                .Where(overlap => (overlap.LandscapeLayer & (LandscapeLayerFlags)landscapeLayer) != 0)
-                .ToList();
-        }
-
-        public Sprite GetRandomBackgroundSprite()
-        {
-            return backgroundSprites[Random.Range(0, backgroundSprites.Count)];
-        }
+        public IEnumerable<OverlapGraphic> GetOverlapGraphic(LandscapeLayer layer) =>
+            overlapGraphics
+                .Where(overlap => (overlap.LandscapeLayer & (LandscapeLayerFlags)layer) != 0);
         
-        public Sprite GetRandomLandscapeBackgroundSprite()
-        {
-            return landscapeBackgroundSprites[Random.Range(0, backgroundSprites.Count)];
-        }
-    }
+        public OverlapGraphic[] GetOverlapGraphic(LandscapeLayerFlags flags) =>
+            overlapGraphics
+                .Where(overlap => (overlap.LandscapeLayer & flags) != 0)
+                .ToArray();
 
-    [Serializable]
-    public class OverlapGraphic
-    {
-        [field: SerializeField] public OverlapType OverlapType { get; private set; }
-        [field: SerializeField] public Sprite Sprite { get; private set; }
-        [field: SerializeField] public LandscapeLayerFlags LandscapeLayer { get; private set; }
+        public Sprite GetRandomBackgroundSprite() =>
+            backgroundSprites[Random.Range(0, backgroundSprites.Length)];
+
+        public Sprite GetRandomLandscapeBackgroundSprite() =>
+            landscapeBackgroundSprites[Random.Range(0, backgroundSprites.Length)];
     }
 }

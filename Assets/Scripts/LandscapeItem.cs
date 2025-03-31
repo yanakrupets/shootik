@@ -1,27 +1,34 @@
-using System.Collections.Generic;
-using ScriptableObjects;
+using Interfaces;
 using UnityEngine;
 
-public class LandscapeItem : ShootableItem
+[RequireComponent(typeof(SpriteRenderer), typeof(PolygonCollider2D))]
+public class LandscapeItem : ShootableItem, ILandscapeItem
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private PolygonCollider2D _collider;
+    private SpriteRenderer _spriteRenderer;
+    private PolygonCollider2D _polygonCollider;
     
     // serialized particle system
-    
-    public void Initialize(List<ColliderPathPoints> paths, 
-        Sprite sprite, 
-        Vector2 position, 
-        string layerName)
+
+    private void Awake()
     {
-        for (int i = 0; i < paths.Count; i++)
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _polygonCollider = GetComponent<PolygonCollider2D>();
+    }
+
+    public void Initialize(
+        ColliderPathPoints[] landscapePaths, 
+        Sprite landscapeSprite, 
+        Vector2 position, 
+        string landscapeLayerName)
+    {
+        for (var i = 0; i < landscapePaths.Length; i++)
         {
-            _collider.SetPath(i, paths[i].Points);
+            _polygonCollider.SetPath(i, landscapePaths[i].Points);
         }
         
-        _spriteRenderer.sprite = sprite;
+        _spriteRenderer.sprite = landscapeSprite;
         transform.localPosition = position;
-        _spriteRenderer.sortingLayerName = layerName;
+        _spriteRenderer.sortingLayerName = landscapeLayerName;
     }
     
     protected override void PerformAttack()

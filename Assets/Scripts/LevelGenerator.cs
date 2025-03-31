@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Enums;
+using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -24,6 +24,8 @@ public class LevelGenerator : MonoBehaviour
     [Space]
     [SerializeField] private PlacementData[] placementData;
 
+    private const float LandscapePositionY = -4.4f;
+
     public void Start()
     {
         Generate();
@@ -34,38 +36,17 @@ public class LevelGenerator : MonoBehaviour
         backgroundSpriteRenderer.sprite = graphicData.GetRandomBackgroundSprite();
         landscapeBackgroundSpriteRenderer.sprite = graphicData.GetRandomLandscapeBackgroundSprite();
         
-        GenerateTargetZones();
-        GenerateLandscape(LandscapeLayer.Back);
-        GenerateLandscape(LandscapeLayer.Front);
+        GenerateLandscape(LandscapeLayer.Back, landscapePrefab);
+        GenerateLandscape(LandscapeLayer.Overlap, landscapePrefab);
+        GenerateLandscape(LandscapeLayer.Front, landscapePrefab);
     }
 
-    private void GenerateTargetZones()
-    {
-        GenerateObjects(LandscapeLayer.Overlap, targetZonePrefab, 
-            (zone, paths, sprite, position, layerName) =>
-        {
-            zone.Initialize(position);
-            zone.LandscapeItem.Initialize(paths, sprite, Vector2.zero, layerName);
-        });
-    }
-    
-    private void GenerateLandscape(LandscapeLayer landscapeLayer)
-    {
-        GenerateObjects(landscapeLayer, landscapePrefab, 
-            (item, paths, sprite, position, layerName) =>
-            {
-                item.Initialize(paths, sprite, position, layerName);
-            });
-    }
-
-    private void GenerateObjects<TObject>(
+    private void GenerateLandscape<TObject>(
         LandscapeLayer landscapeLayer, 
-        TObject prefab,
-        //action -> delegate
-        Action<TObject, List<ColliderPathPoints>, Sprite, Vector2, string> initialize)
-        where TObject : MonoBehaviour
+        TObject prefab)
+        where TObject : MonoBehaviour, ILandscapeItem
     {
-        var data = placementData.FirstOrDefault(data => data.landscapeLayer == landscapeLayer);
+        var data = placementData.Single(data => data.landscapeLayer == landscapeLayer);
         
         var currentPosition = data.placementRange.x;
         
@@ -73,26 +54,29 @@ public class LevelGenerator : MonoBehaviour
         {
             var overlapGraphic = GetRandomOverlapGraphic(landscapeLayer);
             
-            var colliderWidth = colliderData[overlapGraphic.OverlapType].Width;
+            if (!colliderData.TryGetValue(overlapGraphic.OverlapType, out var overlapCollider))
+            {
+                Debug.LogWarning("There is no such collider!");
+                continue;
+            }
             
-            if (currentPosition + colliderWidth > data.placementRange.y)
+            if (currentPosition + overlapCollider.Width > data.placementRange.y)
                 break;
             
-            var position = new Vector2(currentPosition + colliderWidth / 2, positionData[overlapGraphic.OverlapType].Y);
-            var paths = colliderData[overlapGraphic.OverlapType].Paths;
+            var position = new Vector2(currentPosition + overlapCollider.Width / 2, LandscapePositionY);
+            var paths = overlapCollider.Paths;
             
             var item = Instantiate(prefab, data.transform);
-            initialize(item, paths, overlapGraphic.Sprite, position, data.layerName);
+            item.Initialize(paths, overlapGraphic.Sprite, position, data.layerName);
             
-            currentPosition += colliderWidth + data.distance;
+            currentPosition += overlapCollider.Width + data.distance;
         }
     }
 
     private OverlapGraphic GetRandomOverlapGraphic(LandscapeLayer landscapeLayer)
     {
-        var graphic = graphicData.GetOverlapGraphic(landscapeLayer);
-        //List<OverlapGraphic> graphic = graphicData.GetOverlapGraphic((LandscapeLayer)(LandscapeLayerFlags.Back | LandscapeLayerFlags.Front));
-        var randomIndex = Random.Range(0, graphic.Count);
+        var graphic = graphicData.GetOverlapGraphic(landscapeLayer).ToArray();
+        var randomIndex = Random.Range(0, graphic.Length);
         return graphic[randomIndex];
     }
 
