@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TargetZone : MonoBehaviour, ILandscapeItem
 {

@@ -1,6 +1,7 @@
+using Interfaces;
 using UnityEngine;
 
-public class EnemyItem : TargetItem
+public class EnemyItem : TargetItem, IPoolableItem
 {
     // serialized image
     
@@ -9,5 +10,15 @@ public class EnemyItem : TargetItem
         Debug.Log("Enemy shot");
         // change image color to ?black?
         // hide item
+    }
+
+    public void OnGet()
+    {
+        Debug.Log("Enemy GET");
+    }
+
+    public void OnReturn()
+    {
+        Debug.Log("Enemy RETURN");
     }
 }
