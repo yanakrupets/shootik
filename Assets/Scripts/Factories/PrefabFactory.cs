@@ -7,17 +7,14 @@ namespace Factories
     {
         private readonly T _prefab;
 
-        public Transform Parent { get; }
-
-        public PrefabFactory(T prefab, Transform parent)
+        public PrefabFactory(T prefab)
         {
             _prefab = prefab;
-            Parent = parent;
         }
         
         public T Create()
         {
-            var obj = Object.Instantiate(_prefab, Parent);
+            var obj = Object.Instantiate(_prefab);
             obj.gameObject.SetActive(false);
             return obj;
         }

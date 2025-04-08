@@ -15,10 +15,12 @@ public class CitizenItem : TargetItem, IPoolableItem
     public void OnGet()
     {
         Debug.Log("Citizen GET");
+        gameObject.SetActive(true);
     }
 
     public void OnReturn()
     {
         Debug.Log("Citizen RETURN");
+        gameObject.SetActive(false);
     }
 }

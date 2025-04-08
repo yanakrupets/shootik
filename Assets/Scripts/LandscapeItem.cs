@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Interfaces;
 using UnityEngine;
 
@@ -5,25 +7,25 @@ using UnityEngine;
 public class LandscapeItem : ShootableItem, ILandscapeItem
 {
     private SpriteRenderer _spriteRenderer;
-    private PolygonCollider2D _polygonCollider;
+    private PolygonCollider2D _polygonCollider2d;
     
     // serialized particle system
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _polygonCollider = GetComponent<PolygonCollider2D>();
+        _polygonCollider2d = GetComponent<PolygonCollider2D>();
     }
 
     public void Initialize(
-        ColliderPathPoints[] landscapePaths, 
+        IReadOnlyCollection<ColliderPathPoints> landscapePaths, 
         Sprite landscapeSprite, 
         Vector2 position, 
         string landscapeLayerName)
     {
-        for (var i = 0; i < landscapePaths.Length; i++)
+        for (var i = 0; i < landscapePaths.Count; i++)
         {
-            _polygonCollider.SetPath(i, landscapePaths[i].Points);
+            _polygonCollider2d.SetPath(i, landscapePaths.ElementAt(i).Points);
         }
         
         _spriteRenderer.sprite = landscapeSprite;

@@ -15,22 +15,24 @@ namespace Managers
         [SerializeField] private EnemyItem enemyPrefab;
         [SerializeField] private Transform enemyParent;
 
-        private readonly Dictionary<Type, object> _pools = new();
+        private readonly Dictionary<Type, IObjectPoolBase> _pools = new();
 
         private void Awake()
         {
-            var citizenFactory = new PrefabFactory<CitizenItem>(citizenPrefab, citizenParent);
-            var citizenPool = new ObjectPool<CitizenItem>(citizenFactory);
-            _pools.Add(typeof(CitizenItem), citizenPool);
-            
-            var enemyFactory = new PrefabFactory<EnemyItem>(enemyPrefab, enemyParent);
-            var enemyPool = new ObjectPool<EnemyItem>(enemyFactory);
-            _pools.Add(typeof(EnemyItem), enemyPool);
+            CreatePool(citizenPrefab, citizenParent);
+            CreatePool(enemyPrefab, enemyParent);
         }
 
-        public ObjectPool<T> GetPool<T>() where T : MonoBehaviour, IPoolableItem
+        public IObjectPool<T> GetPool<T>() where T : MonoBehaviour, IPoolableItem
         {
-            return (ObjectPool<T>)_pools[typeof(T)];
+            return (IObjectPool<T>)_pools[typeof(T)];
+        }
+
+        private void CreatePool<T>(T prefab, Transform parent) where T : MonoBehaviour, IPoolableItem
+        {
+            var factory = new PrefabFactory<T>(prefab);
+            var pool = new ObjectPool<T>(factory, parent);
+            _pools.Add(typeof(T), pool);
         }
     }
 }

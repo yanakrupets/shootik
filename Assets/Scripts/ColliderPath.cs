@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Enums;
 using UnityEngine;
 
@@ -7,12 +8,15 @@ public class ColliderPath
 {
     [field: SerializeField] public OverlapType OverlapType { get; private set; }
     [field: SerializeField] public float Width { get; private set; }
-    [field: SerializeField] public ColliderPathPoints[] Paths { get; private set; }
+    
+    [SerializeField] private ColliderPathPoints[] paths;
+
+    public IReadOnlyCollection<ColliderPathPoints> Paths => paths;
 
     public ColliderPath(OverlapType overlapType, float width, ColliderPathPoints[] paths)
     {
         OverlapType = overlapType;
         Width = width;
-        Paths = paths;
+        this.paths = paths;
     }
 }

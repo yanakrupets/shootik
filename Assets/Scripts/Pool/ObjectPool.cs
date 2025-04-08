@@ -1,17 +1,20 @@
 using System.Collections.Generic;
+using Extensions;
 using Interfaces;
 using UnityEngine;
 
 namespace Pool
 {
-    public class ObjectPool<T> where T : MonoBehaviour, IPoolableItem
+    public class ObjectPool<T> : IObjectPool<T> where T : MonoBehaviour, IPoolableItem
     {
         private readonly IObjectFactory<T> _factory;
-        private readonly Queue<T> _objects = new Queue<T>();
+        private readonly Queue<T> _objects = new();
+        private readonly Transform _poolParent;
 
-        public ObjectPool(IObjectFactory<T> factory)
+        public ObjectPool(IObjectFactory<T> factory, Transform parent)
         {
             _factory = factory;
+            _poolParent = parent;
         }
     
         public T Get()
@@ -19,14 +22,13 @@ namespace Pool
             if (_objects.Count > 0)
             {
                 var obj = _objects.Dequeue();
-                obj.gameObject.SetActive(true);
                 obj.OnGet();
                 return obj;
             }
             else
             {
                 var obj = _factory.Create();
-                obj.gameObject.SetActive(true);
+                obj.transform.SetParent(_poolParent, Vector3.zero);
                 obj.OnGet();
                 return obj;
             }
@@ -35,9 +37,7 @@ namespace Pool
         public void Return(T obj)
         {
             obj.OnReturn();
-            obj.gameObject.SetActive(false);
-            obj.transform.SetParent(_factory.Parent);
-            obj.transform.localPosition = Vector3.zero;
+            obj.transform.SetParent(_poolParent, Vector3.zero);
             _objects.Enqueue(obj);
         }
     }

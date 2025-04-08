@@ -9,7 +9,7 @@ public class TargetZone : MonoBehaviour, ILandscapeItem
     private List<TargetPlace> _targetPlaces;
 
     public void Initialize(
-        ColliderPathPoints[] landscapePaths, 
+        IReadOnlyCollection<ColliderPathPoints> landscapePaths, 
         Sprite landscapeSprite, 
         Vector2 position, 
         string landscapeLayerName)

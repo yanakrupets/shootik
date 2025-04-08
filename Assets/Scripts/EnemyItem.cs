@@ -15,10 +15,12 @@ public class EnemyItem : TargetItem, IPoolableItem
     public void OnGet()
     {
         Debug.Log("Enemy GET");
+        gameObject.SetActive(true);
     }
 
     public void OnReturn()
     {
         Debug.Log("Enemy RETURN");
+        gameObject.SetActive(false);
     }
 }

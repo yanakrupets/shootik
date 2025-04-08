@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Interfaces
@@ -5,7 +6,7 @@ namespace Interfaces
     public interface ILandscapeItem
     {
         void Initialize(
-            ColliderPathPoints[] landscapePaths, 
+            IReadOnlyCollection<ColliderPathPoints> landscapePaths, 
             Sprite landscapeSprite, 
             Vector2 position, 
             string landscapeLayerName);
