@@ -1,37 +1,31 @@
 using System.Collections.Generic;
-using Interfaces;
+using System.Linq;
+using Serializable;
 using UnityEngine;
 
-public class TargetZone : MonoBehaviour, ILandscapeItem
+public class TargetZone : LandscapeItem
 {
-    [SerializeField] private LandscapeItem landscapeItem;
+    private TargetPlace[] _targetPlaces;
+
+    public bool IsFree => _targetPlaces.Any(place => place.IsFree);
     
-    private List<TargetPlace> _targetPlaces;
-
-    public void Initialize(
-        IReadOnlyCollection<ColliderPathPoints> landscapePaths, 
-        Sprite landscapeSprite, 
-        Vector2 position, 
-        string landscapeLayerName)
+    public void GenerateTargetPlaces(IReadOnlyCollection<AnimationData> animationData)
     {
-        // set position
-        // create SO for each overlap ( X random range + Y position )
-        transform.position = position;
+        _targetPlaces = new TargetPlace[animationData.Count];
+        for (var i = 0; i < animationData.Count; i++)
+        {
+            _targetPlaces[i] = new TargetPlace(animationData.ElementAt(i));
+        }
+    }
+
+    public TargetPlace GetRandomFreeTargetPlace()
+    {
+        var freePlaces = _targetPlaces
+            .Where(place => place.IsFree)
+            .ToArray();
         
-        landscapeItem.Initialize(landscapePaths, landscapeSprite, Vector2.zero, landscapeLayerName);
-
-        // generate target places
-        // create SO for places for each overlap
-    }
-
-    public void SetTargetPlaces(List<TargetPlace> targetPlaces)
-    {
-        _targetPlaces = targetPlaces;
-    }
-
-    public void SetOverlap(Sprite sprite, Vector2 position)
-    {
-        //_overlapSpriteRenderer.sprite = sprite;
-        //_overlapTransform.position = position;
+        return freePlaces.Length == 0 ? 
+            null : 
+            freePlaces[Random.Range(0, freePlaces.Length)];
     }
 }

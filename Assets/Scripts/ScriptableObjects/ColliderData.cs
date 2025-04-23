@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Enums;
+using Serializable;
 using UnityEngine;
 
 namespace ScriptableObjects

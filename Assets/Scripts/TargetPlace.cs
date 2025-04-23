@@ -1,24 +1,14 @@
-using UnityEngine;
+using Serializable;
 
-public class TargetPlace : MonoBehaviour
+public class TargetPlace
 {
-    private TargetItem _item;
-    
-    public void SetItem(TargetItem item)
-    {
-        _item = item;
-    }
-    
-    public void ShowTarget()
-    {
-        _item.gameObject.SetActive(true);
-        // play animation
-    }
+    public AnimationData AnimationData { get; }
 
-    public void HideTarget()
+    public bool IsFree { get; set; }
+
+    public TargetPlace(AnimationData animationData)
     {
-        // play animation
-        _item.gameObject.SetActive(false);
-        _item = null;
+        AnimationData = animationData;
+        IsFree = true;
     }
 }

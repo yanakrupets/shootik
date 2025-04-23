@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using Interfaces;
 using ScriptableObjects;
+using Serializable;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,17 +21,13 @@ public class LevelGenerator : MonoBehaviour
     [Header("Configs")]
     [SerializeField] private GraphicData graphicData;
     [SerializeField] private ColliderData colliderData;
-    [SerializeField] private PositionData positionData;
 
     [Space]
     [SerializeField] private PlacementData[] placementData;
 
     private const float LandscapePositionY = -4.4f;
 
-    public void Start()
-    {
-        Generate();
-    }
+    private List<TargetZone> _targetZones;
 
     public void Generate()
     {
@@ -37,15 +35,30 @@ public class LevelGenerator : MonoBehaviour
         landscapeBackgroundSpriteRenderer.sprite = graphicData.GetRandomLandscapeBackgroundSprite();
         
         GenerateLandscape(LandscapeLayer.Back, landscapePrefab);
-        GenerateLandscape(LandscapeLayer.Overlap, landscapePrefab);
         GenerateLandscape(LandscapeLayer.Front, landscapePrefab);
+        
+        _targetZones = GenerateLandscape(LandscapeLayer.Overlap, targetZonePrefab);
+        SetupTargetZones();
     }
 
-    private void GenerateLandscape<TObject>(
+    public TargetZone GetRandomFreeTargetZone()
+    {
+        var freeZones = _targetZones
+            .Where(zone => zone.IsFree)
+            .ToArray();
+
+        return freeZones.Length == 0 ? 
+            null : 
+            freeZones[Random.Range(0, freeZones.Length)];
+    }
+
+    private List<TObject> GenerateLandscape<TObject>(
         LandscapeLayer landscapeLayer, 
         TObject prefab)
         where TObject : MonoBehaviour, ILandscapeItem
     {
+        var landscapeObjects = new List<TObject>();
+        
         var data = placementData.Single(data => data.landscapeLayer == landscapeLayer);
         
         var currentPosition = data.placementRange.x;
@@ -67,9 +80,28 @@ public class LevelGenerator : MonoBehaviour
             var paths = overlapCollider.Paths;
             
             var item = Instantiate(prefab, data.transform);
-            item.Initialize(paths, overlapGraphic.Sprite, position, data.layerName);
+            item.Initialize(overlapGraphic.OverlapType, paths, overlapGraphic.Sprite, position, data.layerName);
+            
+            landscapeObjects.Add(item);
             
             currentPosition += overlapCollider.Width + data.distance;
+        }
+        
+        return landscapeObjects;
+    }
+
+    private void SetupTargetZones()
+    {
+        if (_targetZones == null)
+        {
+            Debug.LogError("There is no target zones!");
+            return;
+        }
+
+        foreach (var zone in _targetZones)
+        {
+            var animationData = graphicData.GetAnimationData(zone.OverlapType);
+            zone.GenerateTargetPlaces(animationData);
         }
     }
 

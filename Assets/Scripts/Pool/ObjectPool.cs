@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Pool
 {
-    public class ObjectPool<T> : IObjectPool<T> where T : MonoBehaviour, IPoolableItem
+    public class ObjectPool<T> : IObjectPool<T> where T : MonoBehaviour
     {
         private readonly IObjectFactory<T> _factory;
         private readonly Queue<T> _objects = new();
@@ -22,21 +22,18 @@ namespace Pool
             if (_objects.Count > 0)
             {
                 var obj = _objects.Dequeue();
-                obj.OnGet();
                 return obj;
             }
             else
             {
                 var obj = _factory.Create();
                 obj.transform.SetParent(_poolParent, Vector3.zero);
-                obj.OnGet();
                 return obj;
             }
         }
 
         public void Return(T obj)
         {
-            obj.OnReturn();
             obj.transform.SetParent(_poolParent, Vector3.zero);
             _objects.Enqueue(obj);
         }

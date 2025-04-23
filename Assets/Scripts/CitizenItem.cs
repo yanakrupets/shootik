@@ -1,26 +1,12 @@
-using Interfaces;
 using UnityEngine;
 
-public class CitizenItem : TargetItem, IPoolableItem
+public class CitizenItem : TargetItem
 {
-    // serialized image
-    
     protected override void PerformAttack()
     {
         Debug.Log("Citizen shot");
         // change image color to ?black?
         // hide item
-    }
-
-    public void OnGet()
-    {
-        Debug.Log("Citizen GET");
-        gameObject.SetActive(true);
-    }
-
-    public void OnReturn()
-    {
-        Debug.Log("Citizen RETURN");
-        gameObject.SetActive(false);
+        
     }
 }

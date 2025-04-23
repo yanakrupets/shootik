@@ -15,7 +15,7 @@ MonoBehaviour:
   <ColliderPaths>k__BackingField:
   - <OverlapType>k__BackingField: 1
     <Width>k__BackingField: 2.109375
-    <Paths>k__BackingField:
+    paths:
     - <Points>k__BackingField:
       - {x: -0.703125, y: 1.40625}
       - {x: -0.703125, y: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
       - {x: 0.703125, y: 1.40625}
   - <OverlapType>k__BackingField: 2
     <Width>k__BackingField: 1.265625
-    <Paths>k__BackingField:
+    paths:
     - <Points>k__BackingField:
       - {x: -0.421875, y: 1.09375}
       - {x: -0.421875, y: 0}
@@ -32,7 +32,7 @@ MonoBehaviour:
       - {x: 0.421875, y: 1.09375}
   - <OverlapType>k__BackingField: 3
     <Width>k__BackingField: 2.671875
-    <Paths>k__BackingField:
+    paths:
     - <Points>k__BackingField:
       - {x: -0.359375, y: 0.90625}
       - {x: -0.484375, y: 0.71875}
@@ -44,7 +44,7 @@ MonoBehaviour:
       - {x: 0.515625, y: 0.90625}
   - <OverlapType>k__BackingField: 4
     <Width>k__BackingField: 0.796875
-    <Paths>k__BackingField:
+    paths:
     - <Points>k__BackingField:
       - {x: -0.265625, y: 0.3125}
       - {x: -0.265625, y: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
       - {x: 0.234375, y: 0.3125}
   - <OverlapType>k__BackingField: 5
     <Width>k__BackingField: 1.171875
-    <Paths>k__BackingField:
+    paths:
     - <Points>k__BackingField:
       - {x: 0.359375, y: 1.5}
       - {x: -0.015625, y: 1.5}

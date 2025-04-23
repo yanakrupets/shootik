@@ -12,7 +12,7 @@ namespace Controllers
 
         private void Start()
         {
-            Cursor.SetCursor(aimCursorTexture, aimHotspot, CursorMode.Auto);
+            //ChangeView(CursorType.Aim);
         }
 
         public void ChangeView(CursorType cursorType)

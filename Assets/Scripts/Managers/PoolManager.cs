@@ -10,28 +10,36 @@ namespace Managers
     public class PoolManager : MonoBehaviour
     {
         [SerializeField] private CitizenItem citizenPrefab;
-        [SerializeField] private Transform citizenParent;
-
         [SerializeField] private EnemyItem enemyPrefab;
-        [SerializeField] private Transform enemyParent;
+        [SerializeField] private HeartItem heartPrefab;
 
         private readonly Dictionary<Type, IObjectPoolBase> _pools = new();
 
         private void Awake()
         {
-            CreatePool(citizenPrefab, citizenParent);
-            CreatePool(enemyPrefab, enemyParent);
+            CreatePool(citizenPrefab);
+            CreatePool(enemyPrefab);
+            CreatePool(heartPrefab);
         }
 
-        public IObjectPool<T> GetPool<T>() where T : MonoBehaviour, IPoolableItem
+        public IObjectPool<T> GetPool<T>() where T : MonoBehaviour
         {
             return (IObjectPool<T>)_pools[typeof(T)];
         }
 
-        private void CreatePool<T>(T prefab, Transform parent) where T : MonoBehaviour, IPoolableItem
+        private void CreatePool<T>(T prefab) where T : MonoBehaviour
         {
+            if (prefab is null)
+            {
+                Debug.LogError($"Prefab for type {typeof(T).Name} is not assigned!");
+                return;
+            }
+            
+            var parent = new GameObject($"{typeof(T).Name}Pool");
+            parent.transform.SetParent(transform);
+            
             var factory = new PrefabFactory<T>(prefab);
-            var pool = new ObjectPool<T>(factory, parent);
+            var pool = new ObjectPool<T>(factory, parent.transform);
             _pools.Add(typeof(T), pool);
         }
     }
