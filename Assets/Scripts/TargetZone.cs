@@ -3,9 +3,17 @@ using System.Linq;
 using Serializable;
 using UnityEngine;
 
+[RequireComponent(typeof(PolygonCollider2D))]
 public class TargetZone : LandscapeItem
 {
+    private PolygonCollider2D _polygonCollider2d;
     private TargetPlace[] _targetPlaces;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _polygonCollider2d = GetComponent<PolygonCollider2D>();
+    }
 
     public bool IsFree => _targetPlaces.Any(place => place.IsFree);
     
@@ -15,6 +23,14 @@ public class TargetZone : LandscapeItem
         for (var i = 0; i < animationData.Count; i++)
         {
             _targetPlaces[i] = new TargetPlace(animationData.ElementAt(i));
+        }
+    }
+
+    public void SetPath(IReadOnlyCollection<ColliderPathPoints> landscapePaths)
+    {
+        for (var i = 0; i < landscapePaths.Count; i++)
+        {
+            _polygonCollider2d.SetPath(i, landscapePaths.ElementAt(i).Points);
         }
     }
 

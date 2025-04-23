@@ -9,16 +9,14 @@ namespace Serializable
     public class ColliderPath
     {
         [field: SerializeField] public OverlapType OverlapType { get; private set; }
-        [field: SerializeField] public float Width { get; private set; }
     
         [SerializeField] private ColliderPathPoints[] paths;
 
         public IReadOnlyCollection<ColliderPathPoints> Paths => paths;
 
-        public ColliderPath(OverlapType overlapType, float width, ColliderPathPoints[] paths)
+        public ColliderPath(OverlapType overlapType, ColliderPathPoints[] paths)
         {
             OverlapType = overlapType;
-            Width = width;
             this.paths = paths;
         }
     }

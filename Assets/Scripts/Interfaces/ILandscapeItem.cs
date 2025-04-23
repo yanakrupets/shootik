@@ -11,7 +11,6 @@ namespace Interfaces
         
         void Initialize(
             OverlapType type,
-            IReadOnlyCollection<ColliderPathPoints> landscapePaths, 
             Sprite landscapeSprite, 
             Vector2 position, 
             string landscapeLayerName);

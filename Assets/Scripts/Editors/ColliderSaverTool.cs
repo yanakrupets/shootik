@@ -70,7 +70,7 @@ namespace Editors
                 pathPoints[i] = points;
             }
             
-            var path = new ColliderPath(_overlapType, _collider2D.bounds.size.x, pathPoints);
+            var path = new ColliderPath(_overlapType, pathPoints);
 
             var index = _colliderData
                 .ColliderPaths

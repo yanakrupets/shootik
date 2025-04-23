@@ -3102,7 +3102,7 @@ MonoBehaviour:
     layerName: Overlap
     transform: {fileID: 216758383}
     placementRange: {x: -7.5, y: 8}
-    distance: 1
+    distance: 2
   - landscapeLayer: 4
     layerName: Front Landscape
     transform: {fileID: 1478458172}

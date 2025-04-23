@@ -16,5 +16,7 @@ namespace Serializable
         public Sprite Sprite => sprite;
         public LandscapeLayerFlags LandscapeLayer => landscapeLayer;
         public AnimationData[] AnimationData => animationData;
+
+        public float Width => sprite.bounds.size.x;
     }
 }

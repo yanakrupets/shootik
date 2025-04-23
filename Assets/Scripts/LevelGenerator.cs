@@ -67,24 +67,17 @@ public class LevelGenerator : MonoBehaviour
         {
             var overlapGraphic = GetRandomOverlapGraphic(landscapeLayer);
             
-            if (!colliderData.TryGetValue(overlapGraphic.OverlapType, out var overlapCollider))
-            {
-                Debug.LogWarning("There is no such collider!");
-                continue;
-            }
-            
-            if (currentPosition + overlapCollider.Width > data.placementRange.y)
+            if (currentPosition + overlapGraphic.Width > data.placementRange.y)
                 break;
             
-            var position = new Vector2(currentPosition + overlapCollider.Width / 2, LandscapePositionY);
-            var paths = overlapCollider.Paths;
+            var position = new Vector2(currentPosition + overlapGraphic.Width / 2, LandscapePositionY);
             
             var item = Instantiate(prefab, data.transform);
-            item.Initialize(overlapGraphic.OverlapType, paths, overlapGraphic.Sprite, position, data.layerName);
+            item.Initialize(overlapGraphic.OverlapType, overlapGraphic.Sprite, position, data.layerName);
             
             landscapeObjects.Add(item);
             
-            currentPosition += overlapCollider.Width + data.distance;
+            currentPosition += overlapGraphic.Width + data.distance;
         }
         
         return landscapeObjects;
@@ -102,6 +95,14 @@ public class LevelGenerator : MonoBehaviour
         {
             var animationData = graphicData.GetAnimationData(zone.OverlapType);
             zone.GenerateTargetPlaces(animationData);
+            
+            if (!colliderData.TryGetValue(zone.OverlapType, out var overlapCollider))
+            {
+                Debug.LogError("There is no such collider!");
+                continue;
+            }
+            var paths = overlapCollider.Paths;
+            zone.SetPath(paths);
         }
     }
 
