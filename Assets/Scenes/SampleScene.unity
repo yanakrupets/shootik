@@ -509,10 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43166eb5bf76bf40af769c050e306c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 5a0911c55ab2a584b91e1729d122a995, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 83e913278cd9c224a9f9fdff0490711e, type: 3}
   aimCursorTexture: {fileID: 2800000, guid: 65784ee54ede51b4cbd33e0e771d65e1, type: 3}
-  defaultHotspot: {x: 0, y: 0}
-  aimHotspot: {x: 0.5, y: -0.5}
 --- !u!1 &287132134
 GameObject:
   m_ObjectHideFlags: 0

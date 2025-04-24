@@ -7,12 +7,13 @@ namespace Controllers
     {
         [SerializeField] private Texture2D cursorTexture;
         [SerializeField] private Texture2D aimCursorTexture;
-        [SerializeField] private Vector2 defaultHotspot = Vector2.zero;
-        [SerializeField] private Vector2 aimHotspot = Vector2.zero;
+        
+        private readonly Vector2 _defaultHotspot = Vector2.zero;
+        private readonly Vector2 _crosshairHotspot = new Vector2(128, 128);
 
         private void Start()
         {
-            //ChangeView(CursorType.Aim);
+            ChangeView(CursorType.Aim);
         }
 
         public void ChangeView(CursorType cursorType)
@@ -20,17 +21,12 @@ namespace Controllers
             switch (cursorType)
             {
                 case CursorType.Default:
-                    Cursor.SetCursor(cursorTexture, defaultHotspot, CursorMode.Auto);
+                    Cursor.SetCursor(cursorTexture, _defaultHotspot, CursorMode.Auto);
                     break;
                 case CursorType.Aim:
-                    Cursor.SetCursor(aimCursorTexture, aimHotspot, CursorMode.Auto);
+                    Cursor.SetCursor(aimCursorTexture, _crosshairHotspot, CursorMode.Auto);
                     break;
             }
-        }
-    
-        public void ChangeAimCursorView(Sprite sprite)
-        {
-        
         }
     }
 }
