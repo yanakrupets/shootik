@@ -23,44 +23,34 @@ namespace Controllers
                 case AnimationType.Move:
                     target.transform.localPosition = animationData.StartPosition;
                     sequence
-                        .Append(target
-                            .DOLocalMove(animationData.EndPosition, animationData.MoveDuration)
-                            .SetEase(Ease.OutCirc))
+                        .Append(Move(target, animationData.EndPosition, animationData.MoveDuration, animationData.MoveStartEase))
                         .AppendInterval(animationData.IntervalDuration)
-                        .Append(target
-                            .DOLocalMove(animationData.StartPosition, animationData.MoveDuration)
-                            .SetEase(Ease.InCirc))
+                        .Append(Move(target, animationData.StartPosition, animationData.MoveDuration, animationData.MoveEndEase))
                         .OnComplete(() => callback?.Invoke());
                     break;
                 case AnimationType.MoveAndRotate:
                     target.transform.localPosition = animationData.StartPosition;
                     sequence
-                        .Append(target
-                            .DOLocalMove(animationData.EndPosition, animationData.MoveDuration)
-                            .SetEase(Ease.OutCirc))
-                        .Join(target
-                            .DOLocalRotate(new Vector3(0, 0, animationData.EndRotationZ), animationData.RotateDuration))
+                        .Append(Move(target, animationData.EndPosition, animationData.MoveDuration, animationData.MoveStartEase))
+                        .Join(Rotate(target, new Vector3(0, 0, animationData.EndRotationZ), animationData.RotateDuration))
                         .AppendInterval(animationData.IntervalDuration)
-                        .Append(target
-                            .DOLocalMove(animationData.StartPosition, animationData.MoveDuration)
-                            .SetEase(Ease.InCirc))
-                        .Join(target
-                            .DOLocalRotate(new Vector3(0, 0, animationData.StartRotationZ), animationData.RotateDuration))
+                        .Append(Move(target, animationData.StartPosition, animationData.MoveDuration, animationData.MoveEndEase))
+                        .Join(Rotate(target, new Vector3(0, 0, animationData.StartRotationZ), animationData.RotateDuration))
                         .OnComplete(() => callback?.Invoke());
                     break;
-                case AnimationType.ColorBlink:
+                case AnimationType.ColorChange:
                     if (target.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
                     {
                         spriteRenderer.color = Color.white;
                         sequence
-                            .Append(spriteRenderer.DOColor(animationData.BlinkColor, animationData.BlinkDuration))
+                            .Append(ChangeColor(spriteRenderer, animationData.Color, animationData.ColorDuration))
                             .OnComplete(() => callback?.Invoke());
                     }
                     break;
                 case AnimationType.Scaling:
                     target.localScale = animationData.StartScale;
                     sequence
-                        .Append(target.DOScale(animationData.EndScale, animationData.ScaleDuration))
+                        .Append(Scale(target, animationData.EndScale, animationData.ScaleDuration))
                         .OnComplete(() =>
                         {
                             callback?.Invoke();
@@ -91,6 +81,31 @@ namespace Controllers
                 }
             }
             ActiveSequences.Clear();
+        }
+
+        private static Tween Move(Transform target, Vector2 targetPosition, float duration, Ease ease)
+        {
+            return target
+                .DOLocalMove(targetPosition, duration)
+                .SetEase(ease);
+        }
+
+        private static Tween Rotate(Transform target, Vector3 targetRotation, float duration)
+        {
+            return target
+                .DOLocalRotate(targetRotation, duration);
+        }
+
+        private static Tween ChangeColor(SpriteRenderer target, Color color, float duration)
+        {
+            return target
+                .DOColor(color, duration);
+        }
+
+        private static Tween Scale(Transform target, Vector3 scale, float duration)
+        {
+            return target
+                .DOScale(scale, duration);
         }
 
         private static void StopAnimation(Transform target, bool complete = false)

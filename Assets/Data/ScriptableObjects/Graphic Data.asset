@@ -20,31 +20,55 @@ MonoBehaviour:
     - <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0, y: 0.2}
       <EndPosition>k__BackingField: {x: 0, y: 1.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
       <RotateDuration>k__BackingField: 0
       <StartRotationZ>k__BackingField: 0
       <EndRotationZ>k__BackingField: 0
-      <BlinkDuration>k__BackingField: 0
-      <BlinkColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
       <IntervalDuration>k__BackingField: 1
       <AnimationType>k__BackingField: 1
     - <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: -0.3, y: 0.5}
       <EndPosition>k__BackingField: {x: -0.8, y: 0.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
       <RotateDuration>k__BackingField: 0.5
       <StartRotationZ>k__BackingField: 0
       <EndRotationZ>k__BackingField: 15
-      <BlinkDuration>k__BackingField: 0
-      <BlinkColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
       <IntervalDuration>k__BackingField: 1
       <AnimationType>k__BackingField: 2
     - <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0.3, y: 0.5}
       <EndPosition>k__BackingField: {x: 0.8, y: 0.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
       <RotateDuration>k__BackingField: 0.5
       <StartRotationZ>k__BackingField: 0
       <EndRotationZ>k__BackingField: -15
-      <BlinkDuration>k__BackingField: 0
-      <BlinkColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
       <IntervalDuration>k__BackingField: 1
       <AnimationType>k__BackingField: 2
   - overlapType: 2
@@ -54,11 +78,19 @@ MonoBehaviour:
     - <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0, y: 0.2}
       <EndPosition>k__BackingField: {x: 0, y: 1.2}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
       <RotateDuration>k__BackingField: 0
       <StartRotationZ>k__BackingField: 0
       <EndRotationZ>k__BackingField: 0
-      <BlinkDuration>k__BackingField: 0
-      <BlinkColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
       <IntervalDuration>k__BackingField: 1
       <AnimationType>k__BackingField: 1
   - overlapType: 3
@@ -68,21 +100,37 @@ MonoBehaviour:
     - <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0.15, y: 0.2}
       <EndPosition>k__BackingField: {x: 0.1, y: 1}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
       <RotateDuration>k__BackingField: 0
       <StartRotationZ>k__BackingField: 0
       <EndRotationZ>k__BackingField: 0
-      <BlinkDuration>k__BackingField: 0
-      <BlinkColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
       <IntervalDuration>k__BackingField: 1
       <AnimationType>k__BackingField: 1
     - <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0, y: 0.2}
       <EndPosition>k__BackingField: {x: -0.65, y: 0.65}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
       <RotateDuration>k__BackingField: 0.5
       <StartRotationZ>k__BackingField: 0
       <EndRotationZ>k__BackingField: 15
-      <BlinkDuration>k__BackingField: 0
-      <BlinkColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
       <IntervalDuration>k__BackingField: 1
       <AnimationType>k__BackingField: 2
   - overlapType: 4

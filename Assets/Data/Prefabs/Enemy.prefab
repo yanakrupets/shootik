@@ -138,13 +138,16 @@ MonoBehaviour:
     <MoveDuration>k__BackingField: 0
     <StartPosition>k__BackingField: {x: 0, y: 0}
     <EndPosition>k__BackingField: {x: 0, y: 0}
+    <MoveStartEase>k__BackingField: 0
+    <MoveEndEase>k__BackingField: 0
     <RotateDuration>k__BackingField: 0
     <StartRotationZ>k__BackingField: 0
     <EndRotationZ>k__BackingField: 0
     <ScaleDuration>k__BackingField: 0
-    <EndScale>k__BackingField: 0
-    <BlinkDuration>k__BackingField: 0.1
-    <BlinkColor>k__BackingField: {r: 0.16352195, g: 0.16352195, b: 0.16352195, a: 1}
+    <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+    <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+    <ColorDuration>k__BackingField: 0.1
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <IsLoop>k__BackingField: 1
     <LoopCount>k__BackingField: 4
     <LoopType>k__BackingField: 1

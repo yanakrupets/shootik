@@ -12,6 +12,8 @@ namespace Serializable
         [field: SerializeField] public float MoveDuration { get; private set; }
         [field: SerializeField] public Vector2 StartPosition { get; private set; }
         [field: SerializeField] public Vector2 EndPosition { get; private set; }
+        [field: SerializeField] public Ease MoveStartEase { get; private set; }
+        [field: SerializeField] public Ease MoveEndEase { get; private set; }
         
         [field: Header("Rotate")]
         [field: SerializeField] public float RotateDuration { get; private set; }
@@ -24,8 +26,8 @@ namespace Serializable
         [field: SerializeField] public Vector3 EndScale { get; private set; }
         
         [field: Header("Coloring")]
-        [field: SerializeField] public float BlinkDuration { get; private set; }
-        [field: SerializeField] public Color BlinkColor { get; private set; }
+        [field: SerializeField] public float ColorDuration { get; private set; }
+        [field: SerializeField] public Color Color { get; private set; }
         
         [field: Header("Loop")]
         [field: SerializeField] public bool IsLoop { get; private set; }
