@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DI;
 using Enums;
-using Interfaces;
 using ScriptableObjects;
 using Serializable;
 using UnityEngine;
@@ -17,28 +17,52 @@ public class LevelGenerator : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private TargetZone targetZonePrefab;
     [SerializeField] private LandscapeItem landscapePrefab;
-    
-    [Header("Configs")]
-    [SerializeField] private GraphicData graphicData;
-    [SerializeField] private ColliderData colliderData;
 
     [Space]
     [SerializeField] private PlacementData[] placementData;
 
+    private ColliderData _colliderData;
+    private GraphicData _graphicData;
+    
     private const float LandscapePositionY = -4.4f;
 
+    private List<LandscapeItem> _backItems;
+    private List<LandscapeItem> _frontItems;
     private List<TargetZone> _targetZones;
+
+    [Inject]
+    public void Construct(ColliderData colliderData, GraphicData graphicData)
+    {
+        _colliderData = colliderData;
+        _graphicData = graphicData;
+    }
 
     public void Generate()
     {
-        backgroundSpriteRenderer.sprite = graphicData.GetRandomBackgroundSprite();
-        landscapeBackgroundSpriteRenderer.sprite = graphicData.GetRandomLandscapeBackgroundSprite();
+        backgroundSpriteRenderer.sprite = _graphicData.GetRandomBackgroundSprite();
+        landscapeBackgroundSpriteRenderer.sprite = _graphicData.GetRandomLandscapeBackgroundSprite();
         
-        GenerateLandscape(LandscapeLayer.Back, landscapePrefab);
-        GenerateLandscape(LandscapeLayer.Front, landscapePrefab);
+        _backItems = GenerateLandscape(LandscapeLayer.Back, landscapePrefab);
+        _frontItems = GenerateLandscape(LandscapeLayer.Front, landscapePrefab);
         
         _targetZones = GenerateLandscape(LandscapeLayer.Overlap, targetZonePrefab);
         SetupTargetZones();
+    }
+
+    public void Clean()
+    {
+        Clean(_backItems);
+        Clean(_frontItems);
+        Clean(_targetZones);
+    }
+
+    private void Clean<T>(List<T> items) where T : MonoBehaviour
+    {
+        foreach (var item in items)
+        {
+            Destroy(item.gameObject);
+        }
+        items.Clear();
     }
 
     public TargetZone GetRandomFreeTargetZone()
@@ -55,7 +79,7 @@ public class LevelGenerator : MonoBehaviour
     private List<TObject> GenerateLandscape<TObject>(
         LandscapeLayer landscapeLayer, 
         TObject prefab)
-        where TObject : MonoBehaviour, ILandscapeItem
+        where TObject : LandscapeItem
     {
         var landscapeObjects = new List<TObject>();
         
@@ -72,7 +96,7 @@ public class LevelGenerator : MonoBehaviour
             
             var position = new Vector2(currentPosition + overlapGraphic.Width / 2, LandscapePositionY);
             
-            var item = Instantiate(prefab, data.transform);
+            var item = DiFactory.Instantiate(prefab, data.transform);
             item.Initialize(overlapGraphic.OverlapType, overlapGraphic.Sprite, position, data.layerName);
             
             landscapeObjects.Add(item);
@@ -93,10 +117,10 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (var zone in _targetZones)
         {
-            var animationData = graphicData.GetAnimationData(zone.OverlapType);
+            var animationData = _graphicData.GetAnimationData(zone.OverlapType);
             zone.GenerateTargetPlaces(animationData);
             
-            if (!colliderData.TryGetValue(zone.OverlapType, out var overlapCollider))
+            if (!_colliderData.TryGetValue(zone.OverlapType, out var overlapCollider))
             {
                 Debug.LogError("There is no such collider!");
                 continue;
@@ -108,7 +132,7 @@ public class LevelGenerator : MonoBehaviour
 
     private OverlapGraphic GetRandomOverlapGraphic(LandscapeLayer landscapeLayer)
     {
-        var graphic = graphicData.GetOverlapGraphic(landscapeLayer).ToArray();
+        var graphic = _graphicData.GetOverlapGraphic(landscapeLayer).ToArray();
         var randomIndex = Random.Range(0, graphic.Length);
         return graphic[randomIndex];
     }

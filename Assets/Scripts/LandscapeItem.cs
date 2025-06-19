@@ -1,12 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using Enums;
-using Interfaces;
-using Serializable;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class LandscapeItem : ShootableItem, ILandscapeItem
+public class LandscapeItem : ShootableItem
 {
     private SpriteRenderer _spriteRenderer;
 
@@ -34,8 +30,9 @@ public class LandscapeItem : ShootableItem, ILandscapeItem
     
     protected override void PerformAttack()
     {
+        base.PerformAttack();
         Debug.Log("Landscape shot");
-        // call particles
-        // call sound
+        // particle
+        // play sound
     }
 }

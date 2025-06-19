@@ -1,53 +1,110 @@
 using System;
-using System.Collections;
-using Controllers;
+using System.Collections.Generic;
+using DI;
 using Enums;
+using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Threading.Tasks;
+using Models;
+using static Controllers.AnimationController;
 
 namespace Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : IInitializable, IDisposable
     {
-        [SerializeField] private LevelGenerator levelGenerator;
-        [SerializeField] private PoolManager poolManager;
-        [SerializeField] private GraphicData graphicData;
-        [SerializeField] private AimWeightData aimWeightData;
+        private readonly Vector2 _timerRange = new Vector2(3f, 1f);
+        private const float SpeedCoefficient = 0.95f;
+        
+        private readonly AimWeightData _aimWeightData;
+        private readonly GraphicData _graphicData;
+        
+        private readonly EventManager _eventManager;
+        private readonly PoolManager _poolManager;
+        private readonly LevelGenerator _levelGenerator;
+        private readonly HeartModel _heartModel;
+        private readonly EnemyCounterModel _enemyCounterModel;
 
-        [SerializeField] private Vector2 timerRange;
-        [SerializeField, Range(0.8f, 0.99f)] private float speedCoefficient;
-
-        private AnimationController _animationController;
+        private readonly Dictionary<ShootableItem, TargetPlace> _targetPlaces = new();
         private float _currentDelay;
-
-        private void Awake()
+        private bool _isPlaying;
+        
+        [Inject]
+        public GameManager(
+            AimWeightData aimWeightData, 
+            GraphicData graphicData, 
+            EventManager eventManager, 
+            PoolManager poolManager, 
+            LevelGenerator levelGenerator,
+            HeartModel heartModel, 
+            EnemyCounterModel enemyCounterModel)
         {
-            _currentDelay = timerRange.x;
-            _animationController = new AnimationController();
+            _aimWeightData = aimWeightData;
+            _graphicData = graphicData;
+            
+            _eventManager = eventManager;
+            _poolManager = poolManager;
+            _levelGenerator = levelGenerator;
+            
+            _heartModel = heartModel;
+            _enemyCounterModel = enemyCounterModel;
         }
 
-        private void Start()
+        public void Initialize()
         {
-            levelGenerator.Generate();
-            StartCoroutine(AimCycleRoutine());
+            _eventManager.OnStart += StartGame;
+            _eventManager.OnFinish += FinishGame;
+            _eventManager.OnItemShot += ItemShooted;
         }
-
-        private IEnumerator AimCycleRoutine()
+        
+        public void Dispose()
         {
-            while (true)
+            if (_eventManager != null)
             {
-                yield return new WaitForSeconds(_currentDelay);
+                _eventManager.OnStart += StartGame;
+                _eventManager.OnFinish -= FinishGame;
+                _eventManager.OnItemShot -= ItemShooted;
+            }
+        }
+        
+        private void StartGame()
+        {
+            _levelGenerator.Generate();
+            
+            _enemyCounterModel.ResetCounter();
+            _heartModel.ResetHearts();
+            
+            _currentDelay = _timerRange.x;
+            _isPlaying = true;
+            _ = AimCycleRoutine();
+        }
+
+        private void FinishGame()
+        {
+            _isPlaying = false;
+            StopAllAnimations();
+            _levelGenerator.Clean();
+        }
+        
+        private async Task AimCycleRoutine()
+        {
+            while (_isPlaying)
+            {
+                await Task.Delay((int)(_currentDelay * 1000));
+
+                if (!_isPlaying)
+                    return;
 
                 ShowTarget();
 
-                _currentDelay = Mathf.Max(_currentDelay * speedCoefficient, timerRange.y);
+                _currentDelay = Mathf.Max(_currentDelay * SpeedCoefficient, _timerRange.y);
             }
         }
 
         private void ShowTarget()
         {
-            var targetZone = levelGenerator.GetRandomFreeTargetZone();
+            var targetZone = _levelGenerator.GetRandomFreeTargetZone();
 
             switch (GetRandomTargetType())
             {
@@ -66,50 +123,95 @@ namespace Managers
             }
         }
         
-        private void GenerateTarget<T>(TargetZone targetZone) where T : ShootableItem
+        private void GenerateTarget<T>(TargetZone targetZone) 
+            where T : ShootableItem
         {
             var targetPlace = targetZone.GetRandomFreeTargetPlace();
             
             if (targetPlace is null)
                 return;
             
-            var item = poolManager.GetPool<T>().Get();
+            var item = _poolManager.GetPool<T>().Get();
+            _targetPlaces.Add(item, targetPlace);
             SetAnimation(item, targetZone, targetPlace);
         }
 
-        private void GenerateTargetWithSprite<T>(TargetType targetType, TargetZone targetZone) where T : TargetItem
+        private void GenerateTargetWithSprite<T>(TargetType targetType, TargetZone targetZone) 
+            where T : ShootableItem, ISpriteRenderer
         {
             var targetPlace = targetZone.GetRandomFreeTargetPlace();
-            
+
             if (targetPlace is null)
-                return;
+            {
+                Debug.LogWarningFormat("There is no free target places in {0}", targetZone.OverlapType);
+                return; 
+            }
             
-            var sprite = graphicData.GetRandomTargetSprite(targetType);
-            var item = poolManager.GetPool<T>().Get();
+            var sprite = _graphicData.GetRandomTargetSprite(targetType);
+            var item = _poolManager.GetPool<T>().Get();
             item.SetSprite(sprite);
             item.ChangeFlipX(targetPlace.AnimationData.EndPosition.x > targetPlace.AnimationData.StartPosition.x);
+            _targetPlaces.Add(item, targetPlace);
             SetAnimation(item, targetZone, targetPlace);
         }
 
-        private void SetAnimation<T>(T item, TargetZone targetZone, TargetPlace targetPlace) where T : MonoBehaviour
+        private void SetAnimation<T>(T item, TargetZone targetZone, TargetPlace targetPlace) where T : ShootableItem
         {
             item.transform.SetParent(targetZone.transform);
             item.gameObject.SetActive(true);
             targetPlace.IsFree = false;
-            AnimationController.Play(targetPlace.AnimationData, item.transform, () =>
+            Play(targetPlace.AnimationData, item.transform, () =>
             {
                 targetPlace.IsFree = true;
+                _targetPlaces.Remove(item);
                 item.gameObject.SetActive(false);
                 item.transform.localRotation = Quaternion.identity;
-                poolManager.GetPool<T>().Return(item);
+                _poolManager.GetPool<T>().Return(item);
             });
+        }
+
+        private void ItemShooted(ShootableItem item)
+        {
+            item.IsShot = true;
+            
+            // play sound
+            if (item is IShotAnimated animatedItem)
+            {
+                Play(animatedItem.AnimationData, item.transform, () =>
+                {
+                    item.IsShot = false;
+                    _targetPlaces[item].IsFree = true;
+                    _targetPlaces.Remove(item);
+                    item.gameObject.SetActive(false);
+                    item.transform.localRotation = Quaternion.identity;
+                
+                    switch (item)
+                    {
+                        case EnemyItem enemyItem:
+                            _poolManager.GetPool<EnemyItem>().Return(enemyItem);
+                            _enemyCounterModel.RaiseCounter();
+                            break;
+                        case CitizenItem citizenItem:
+                            _poolManager.GetPool<CitizenItem>().Return(citizenItem);
+                            if (!_heartModel.TryRemoveHeart())
+                            {
+                                _eventManager.PublishFinishGame();
+                            }
+                            break;
+                        case HeartItem heartItem:
+                            _poolManager.GetPool<HeartItem>().Return(heartItem);
+                            _heartModel.AddHeart();
+                            break;
+                    }
+                });
+            }
         }
 
         private TargetType GetRandomTargetType()
         {
-            var randomValue = Random.Range(0, aimWeightData.TotalWeight);
+            var randomValue = Random.Range(0, _aimWeightData.TotalWeight);
 
-            foreach (var entry in aimWeightData.weights)
+            foreach (var entry in _aimWeightData.weights)
             {
                 if (randomValue < entry.Weight)
                 {

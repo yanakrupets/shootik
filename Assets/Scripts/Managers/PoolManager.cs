@@ -15,7 +15,7 @@ namespace Managers
 
         private readonly Dictionary<Type, IObjectPoolBase> _pools = new();
 
-        private void Awake()
+        public void Awake()
         {
             CreatePool(citizenPrefab);
             CreatePool(enemyPrefab);

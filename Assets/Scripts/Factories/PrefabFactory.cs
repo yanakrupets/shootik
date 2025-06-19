@@ -1,3 +1,4 @@
+using DI;
 using Interfaces;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace Factories
         
         public T Create()
         {
-            var obj = Object.Instantiate(_prefab);
+            var obj = DiFactory.Instantiate(_prefab);
             obj.gameObject.SetActive(false);
             return obj;
         }
