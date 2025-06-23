@@ -13,7 +13,7 @@ namespace Editors
         private SerializedProperty _backgroundSpritesProp;
         private SerializedProperty _landscapeBackgroundSpritesProp;
         private SerializedProperty _citizenSpritesProp;
-        private SerializedProperty _enemySpritesProp;
+        private SerializedProperty _enemySpriteSetsProp;
 
         private void OnEnable()
         {
@@ -21,7 +21,7 @@ namespace Editors
             _backgroundSpritesProp = serializedObject.FindProperty("backgroundSprites");
             _landscapeBackgroundSpritesProp = serializedObject.FindProperty("landscapeBackgroundSprites");
             _citizenSpritesProp = serializedObject.FindProperty("citizenSprites");
-            _enemySpritesProp = serializedObject.FindProperty("enemySprites");
+            _enemySpriteSetsProp = serializedObject.FindProperty("enemySpriteSets");
         }
 
         public override void OnInspectorGUI()
@@ -32,7 +32,7 @@ namespace Editors
             EditorGUILayout.PropertyField(_backgroundSpritesProp, true);
             EditorGUILayout.PropertyField(_landscapeBackgroundSpritesProp, true);
             EditorGUILayout.PropertyField(_citizenSpritesProp, true);
-            EditorGUILayout.PropertyField(_enemySpritesProp, true);
+            EditorGUILayout.PropertyField(_enemySpriteSetsProp, true);
         
             // Overlap Graphics
             EditorGUILayout.Space(20);

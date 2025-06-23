@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Controllers;
 using DI;
 using Enums;
 using ScriptableObjects;
@@ -22,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private PlacementData[] placementData;
 
     private ColliderData _colliderData;
-    private GraphicData _graphicData;
+    private GraphicController _graphicController;
     
     private const float LandscapePositionY = -4.4f;
 
@@ -31,16 +32,16 @@ public class LevelGenerator : MonoBehaviour
     private List<TargetZone> _targetZones;
 
     [Inject]
-    public void Construct(ColliderData colliderData, GraphicData graphicData)
+    public void Construct(ColliderData colliderData, GraphicController graphicController)
     {
         _colliderData = colliderData;
-        _graphicData = graphicData;
+        _graphicController = graphicController;
     }
 
     public void Generate()
     {
-        backgroundSpriteRenderer.sprite = _graphicData.GetRandomBackgroundSprite();
-        landscapeBackgroundSpriteRenderer.sprite = _graphicData.GetRandomLandscapeBackgroundSprite();
+        backgroundSpriteRenderer.sprite = _graphicController.GetRandomBackgroundSprite();
+        landscapeBackgroundSpriteRenderer.sprite = _graphicController.GetRandomLandscapeBackgroundSprite();
         
         _backItems = GenerateLandscape(LandscapeLayer.Back, landscapePrefab);
         _frontItems = GenerateLandscape(LandscapeLayer.Front, landscapePrefab);
@@ -117,7 +118,7 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (var zone in _targetZones)
         {
-            var animationData = _graphicData.GetAnimationData(zone.OverlapType);
+            var animationData = _graphicController.GetAnimationData(zone.OverlapType);
             zone.GenerateTargetPlaces(animationData);
             
             if (!_colliderData.TryGetValue(zone.OverlapType, out var overlapCollider))
@@ -132,7 +133,7 @@ public class LevelGenerator : MonoBehaviour
 
     private OverlapGraphic GetRandomOverlapGraphic(LandscapeLayer landscapeLayer)
     {
-        var graphic = _graphicData.GetOverlapGraphic(landscapeLayer).ToArray();
+        var graphic = _graphicController.GetOverlapGraphic(landscapeLayer).ToArray();
         var randomIndex = Random.Range(0, graphic.Length);
         return graphic[randomIndex];
     }

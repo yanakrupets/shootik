@@ -1,9 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
-using Enums;
 using Serializable;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace ScriptableObjects
 {
@@ -16,31 +12,12 @@ namespace ScriptableObjects
         [SerializeField] private Sprite[] landscapeBackgroundSprites;
 
         [SerializeField] private Sprite[] citizenSprites;
-        [SerializeField] private Sprite[] enemySprites;
+        [SerializeField] private GraphicSpriteSet[] enemySpriteSets;
 
-        public IEnumerable<OverlapGraphic> GetOverlapGraphic(LandscapeLayer layer) =>
-            overlapGraphics
-                .Where(overlap => (overlap.LandscapeLayer & (LandscapeLayerFlags)layer) != 0);
-
-        public IReadOnlyCollection<AnimationData> GetAnimationData(OverlapType overlapType) =>
-            overlapGraphics
-                .Single(overlap => overlap.OverlapType == overlapType)
-                .AnimationData;
-
-        public Sprite GetRandomBackgroundSprite() =>
-            backgroundSprites[Random.Range(0, backgroundSprites.Length)];
-
-        public Sprite GetRandomLandscapeBackgroundSprite() =>
-            landscapeBackgroundSprites[Random.Range(0, backgroundSprites.Length)];
-        
-        public Sprite GetRandomTargetSprite(TargetType targetType)
-        {
-            return targetType switch
-            {
-                TargetType.Citizen => citizenSprites[Random.Range(0, citizenSprites.Length)],
-                TargetType.Enemy => enemySprites[Random.Range(0, enemySprites.Length)],
-                _ => null
-            };
-        }
+        public OverlapGraphic[] OverlapGraphics => overlapGraphics;
+        public Sprite[] BackgroundSprites => backgroundSprites;
+        public Sprite[] LandscapeBackgroundSprites => landscapeBackgroundSprites;
+        public Sprite[] CitizenSprites => citizenSprites;
+        public GraphicSpriteSet[] EnemySpriteSets => enemySpriteSets;
     }
 }

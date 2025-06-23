@@ -20,10 +20,10 @@ namespace Managers
         private const float SpeedCoefficient = 0.95f;
         
         private readonly AimWeightData _aimWeightData;
-        private readonly GraphicData _graphicData;
         
         private readonly EventManager _eventManager;
         private readonly PoolManager _poolManager;
+        private readonly GraphicController _graphicController;
         private readonly CanvasController _canvasController;
         private readonly LevelGenerator _levelGenerator;
         private readonly InputActionAsset _inputActionsAsset;
@@ -49,6 +49,7 @@ namespace Managers
             GraphicData graphicData, 
             EventManager eventManager, 
             PoolManager poolManager, 
+            GraphicController graphicController,
             CanvasController canvasController, 
             LevelGenerator levelGenerator,
             InputActionAsset inputActionsAsset,
@@ -62,10 +63,10 @@ namespace Managers
             EducationCanvasModel educationCanvasModel)
         {
             _aimWeightData = aimWeightData;
-            _graphicData = graphicData;
             
             _eventManager = eventManager;
             _poolManager = poolManager;
+            _graphicController = graphicController;
             _canvasController = canvasController;
             _levelGenerator = levelGenerator;
             _inputActionsAsset = inputActionsAsset;
@@ -134,6 +135,7 @@ namespace Managers
         private void StartGame()
         {
             _levelGenerator.Generate();
+            _graphicController.SelectRandomEnemySet();
             
             _enemyCounterModel.ResetCounter();
             _heartModel.ResetHearts();
@@ -238,7 +240,7 @@ namespace Managers
                 return; 
             }
             
-            var sprite = _graphicData.GetRandomTargetSprite(targetType);
+            var sprite = _graphicController.GetRandomTargetSprite(targetType);
             var item = _poolManager.GetPool<T>().Get();
             item.SetSprite(sprite);
             item.ChangeFlipX(targetPlace.AnimationData.EndPosition.x > targetPlace.AnimationData.StartPosition.x);

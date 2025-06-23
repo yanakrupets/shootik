@@ -135,6 +135,9 @@ public class Bootstrap : MonoBehaviour
         
         DiContainer.Bind(new EventManager());
         
+        var graphicController = DiFactory.Create<GraphicController>();
+        DiContainer.Bind(graphicController);
+        
         var canvasController = DiFactory.Create<CanvasController>();
         DiContainer.Bind(canvasController);
         
