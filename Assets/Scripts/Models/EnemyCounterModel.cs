@@ -5,26 +5,36 @@ namespace Models
 {
     public class EnemyCounterModel
     {
-        private readonly EnemyCounterView _view;
+        private readonly EnemyCounterView _counterView;
+        private readonly ScoreResultView _resultScoreView;
     
         private int _enemyCount;
 
+        public int CurrentCount => _enemyCount;
+
         [Inject]
-        public EnemyCounterModel(EnemyCounterView view)
+        public EnemyCounterModel(EnemyCounterView counterView, ScoreResultView resultScoreView)
         {
-            _view = view;
+            _counterView = counterView;
+            _resultScoreView = resultScoreView;
         }
 
         public void ResetCounter()
         {
             _enemyCount = 0;
-            _view.ResetView(_enemyCount);
+            _counterView.UpdateCount(_enemyCount);
+            _resultScoreView.SetResultScore(_enemyCount);
         }
 
         public void RaiseCounter()
         {
             _enemyCount++;
-            _view.UpdateCount(_enemyCount);
+            _counterView.UpdateCount(_enemyCount);
+        }
+
+        public void SetResultScore()
+        {
+            _resultScoreView.SetResultScore(_enemyCount);
         }
     }
 }

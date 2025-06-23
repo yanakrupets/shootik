@@ -7,7 +7,7 @@ namespace Interfaces
     {
         public SpriteRenderer SpriteRenderer { get; }
     
-        void SetSprite([CanBeNull]Sprite sprite)
+        public void SetSprite([CanBeNull]Sprite sprite)
         {
             if (sprite is null)
                 return;

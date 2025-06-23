@@ -10,14 +10,4 @@ public class EnemyItem : ShootableItem, ISpriteRenderer, IShotAnimated
     public AnimationData AnimationData => shotAnimation;
     
     public SpriteRenderer SpriteRenderer => spriteRenderer;
-
-    protected override void PerformAttack()
-    {
-        base.PerformAttack();
-        Debug.Log("Enemy shot");
-        // blinking color animation
-        // play sound
-        // +point
-        // return to pool
-    }
 }

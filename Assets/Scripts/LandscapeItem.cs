@@ -27,12 +27,4 @@ public class LandscapeItem : ShootableItem
         transform.localPosition = position;
         _spriteRenderer.sortingLayerName = landscapeLayerName;
     }
-    
-    protected override void PerformAttack()
-    {
-        base.PerformAttack();
-        Debug.Log("Landscape shot");
-        // particle
-        // play sound
-    }
 }

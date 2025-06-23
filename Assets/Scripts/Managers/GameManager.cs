@@ -7,7 +7,9 @@ using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Threading.Tasks;
+using Controllers;
 using Models;
+using UnityEngine.InputSystem;
 using static Controllers.AnimationController;
 
 namespace Managers
@@ -22,13 +24,24 @@ namespace Managers
         
         private readonly EventManager _eventManager;
         private readonly PoolManager _poolManager;
+        private readonly CanvasController _canvasController;
         private readonly LevelGenerator _levelGenerator;
+        private readonly InputActionAsset _inputActionsAsset;
+        private readonly GameStateMachine _gameStateMachine;
+        
         private readonly HeartModel _heartModel;
         private readonly EnemyCounterModel _enemyCounterModel;
+        private readonly ScoreModel _scoreModel;
+        private readonly MenuCanvasModel _menuCanvasModel;
+        private readonly ResultCanvasModel _resultCanvasModel;
+        private readonly PauseMenuCanvasModel _pauseMenuCanvasModel;
+        private readonly EducationCanvasModel _educationCanvasModel;
 
         private readonly Dictionary<ShootableItem, TargetPlace> _targetPlaces = new();
         private float _currentDelay;
         private bool _isPlaying;
+        
+        private InputAction _escapeAction;
         
         [Inject]
         public GameManager(
@@ -36,19 +49,35 @@ namespace Managers
             GraphicData graphicData, 
             EventManager eventManager, 
             PoolManager poolManager, 
+            CanvasController canvasController, 
             LevelGenerator levelGenerator,
+            InputActionAsset inputActionsAsset,
+            GameStateMachine gameStateMachine,
             HeartModel heartModel, 
-            EnemyCounterModel enemyCounterModel)
+            EnemyCounterModel enemyCounterModel,
+            ScoreModel scoreModel, 
+            MenuCanvasModel menuCanvasModel,
+            ResultCanvasModel resultCanvasModel,
+            PauseMenuCanvasModel pauseMenuCanvasModel,
+            EducationCanvasModel educationCanvasModel)
         {
             _aimWeightData = aimWeightData;
             _graphicData = graphicData;
             
             _eventManager = eventManager;
             _poolManager = poolManager;
+            _canvasController = canvasController;
             _levelGenerator = levelGenerator;
+            _inputActionsAsset = inputActionsAsset;
+            _gameStateMachine = gameStateMachine;
             
             _heartModel = heartModel;
             _enemyCounterModel = enemyCounterModel;
+            _scoreModel = scoreModel;
+            _menuCanvasModel = menuCanvasModel;
+            _resultCanvasModel = resultCanvasModel;
+            _pauseMenuCanvasModel = pauseMenuCanvasModel;
+            _educationCanvasModel = educationCanvasModel;
         }
 
         public void Initialize()
@@ -56,6 +85,24 @@ namespace Managers
             _eventManager.OnStart += StartGame;
             _eventManager.OnFinish += FinishGame;
             _eventManager.OnItemShot += ItemShooted;
+            
+            _escapeAction = _inputActionsAsset.FindAction("UI/Escape");
+            if (_escapeAction == null)
+            {
+                Debug.LogError("Escape action not found in Input Actions Asset!");
+                return;
+            }
+            
+            _escapeAction.performed += HandleEscape;
+            
+            _menuCanvasModel.View.PlayButton.onClick.AddListener(PublishStartGame);
+            _menuCanvasModel.View.EducationButton.onClick.AddListener(OpenEducation);
+            _resultCanvasModel.View.MenuButton.onClick.AddListener(OpenMenu);
+            _pauseMenuCanvasModel.View.ContinueButton.onClick.AddListener(ContinueGame);
+            _pauseMenuCanvasModel.View.MenuButton.onClick.AddListener(FinishGame);
+            _educationCanvasModel.View.MenuButton.onClick.AddListener(OpenMenu);
+            
+            _canvasController.Open(CanvasType.Menu);
         }
         
         public void Dispose()
@@ -66,6 +113,22 @@ namespace Managers
                 _eventManager.OnFinish -= FinishGame;
                 _eventManager.OnItemShot -= ItemShooted;
             }
+            
+            if (_escapeAction != null)
+            {
+                _escapeAction.performed -= HandleEscape;
+        
+                if (_escapeAction.enabled)
+                {
+                    _escapeAction.Disable();
+                }
+            }
+            
+            _menuCanvasModel.View.PlayButton.onClick.RemoveListener(PublishStartGame);
+            _menuCanvasModel.View.EducationButton.onClick.RemoveListener(OpenEducation);
+            _resultCanvasModel.View.MenuButton.onClick.RemoveListener(OpenMenu);
+            _pauseMenuCanvasModel.View.ContinueButton.onClick.RemoveListener(ContinueGame);
+            _pauseMenuCanvasModel.View.MenuButton.onClick.RemoveListener(FinishGame);
         }
         
         private void StartGame()
@@ -75,16 +138,44 @@ namespace Managers
             _enemyCounterModel.ResetCounter();
             _heartModel.ResetHearts();
             
+            _canvasController.Open(CanvasType.Gameplay);
+            
             _currentDelay = _timerRange.x;
             _isPlaying = true;
             _ = AimCycleRoutine();
+            
+            _gameStateMachine.ChangeState(GameState.Playing);
+            _escapeAction.Enable();
+        }
+
+        private void ContinueGame()
+        {
+            _isPlaying = true;
+            _ = AimCycleRoutine();
+            PauseGame(false);
+            _canvasController.Open(CanvasType.Gameplay);
+            
+            _gameStateMachine.ChangeState(GameState.Playing);
+            _escapeAction.Enable();
+        }
+
+        private void PauseGame(bool isPaused)
+        {
+            Time.timeScale = isPaused ? 0 : 1;
         }
 
         private void FinishGame()
         {
+            PauseGame(false);
             _isPlaying = false;
             StopAllAnimations();
             _levelGenerator.Clean();
+            
+            _enemyCounterModel.SetResultScore();
+            _canvasController.Open(CanvasType.Result);
+            
+            _gameStateMachine.ChangeState(GameState.None);
+            _escapeAction.Disable();
         }
         
         private async Task AimCycleRoutine()
@@ -190,6 +281,7 @@ namespace Managers
                         case EnemyItem enemyItem:
                             _poolManager.GetPool<EnemyItem>().Return(enemyItem);
                             _enemyCounterModel.RaiseCounter();
+                            _scoreModel.UpdateScore(_enemyCounterModel.CurrentCount);
                             break;
                         case CitizenItem citizenItem:
                             _poolManager.GetPool<CitizenItem>().Return(citizenItem);
@@ -221,6 +313,31 @@ namespace Managers
             }
 
             return TargetType.None;
+        }
+        
+        private void OpenEducation()
+        {
+            _canvasController.Open(CanvasType.Education);
+        }
+
+        private void OpenMenu()
+        {
+            _canvasController.Open(CanvasType.Menu);
+        }
+
+        private void PublishStartGame()
+        {
+            _eventManager.PublishStartGame();
+        }
+        
+        private void HandleEscape(InputAction.CallbackContext context)
+        {
+            _canvasController.Open(CanvasType.PauseMenu);
+            _isPlaying = false;
+            PauseGame(true);
+                
+            _gameStateMachine.ChangeState(GameState.Paused);
+            _escapeAction.Disable();
         }
     }
 }

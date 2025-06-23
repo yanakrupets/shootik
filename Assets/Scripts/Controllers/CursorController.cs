@@ -1,30 +1,47 @@
+using DI;
 using Enums;
+using Interfaces;
+using Managers;
 using UnityEngine;
 
 namespace Controllers
 {
-    public class CursorController : MonoBehaviour
+    public class CursorController : IInitializable
     {
-        [SerializeField] private Texture2D cursorTexture;
-        [SerializeField] private Texture2D aimCursorTexture;
+        private Texture2D _cursorTexture;
+        private Texture2D _aimCursorTexture;
         
         private readonly Vector2 _defaultHotspot = Vector2.zero;
         private readonly Vector2 _crosshairHotspot = new Vector2(128, 128);
+        
+        private readonly EventManager _eventManager;
 
-        private void Start()
+        [Inject]
+        public CursorController(EventManager eventManager)
         {
-            ChangeView(CursorType.Aim);
+            _eventManager = eventManager;
+        }
+        
+        public void Initialize()
+        {
+            _eventManager.OnGameStateChanged += ChangeView;
+            
+            _cursorTexture = Resources.Load<Texture2D>("Sprites/Cursor");
+            _aimCursorTexture = Resources.Load<Texture2D>("Sprites/Cursor_0");
+            
+            ChangeView(GameState.None);
         }
 
-        public void ChangeView(CursorType cursorType)
+        private void ChangeView(GameState gameState)
         {
-            switch (cursorType)
+            switch (gameState)
             {
-                case CursorType.Default:
-                    Cursor.SetCursor(cursorTexture, _defaultHotspot, CursorMode.Auto);
+                case GameState.Playing:
+                    Cursor.SetCursor(_aimCursorTexture, _crosshairHotspot, CursorMode.Auto);
                     break;
-                case CursorType.Aim:
-                    Cursor.SetCursor(aimCursorTexture, _crosshairHotspot, CursorMode.Auto);
+                case GameState.Paused:
+                case GameState.None:
+                    Cursor.SetCursor(_cursorTexture, _defaultHotspot, CursorMode.Auto);
                     break;
             }
         }

@@ -1,3 +1,5 @@
+using Enums;
+
 namespace Managers
 {
     public class EventManager
@@ -10,6 +12,9 @@ namespace Managers
         
         public delegate void FinishEvent();
         public event FinishEvent OnFinish;
+        
+        public delegate void GameStateChangedEvent(GameState gameState);
+        public event GameStateChangedEvent OnGameStateChanged;
 
         public void PublishItemShot(ShootableItem item)
         {
@@ -24,6 +29,11 @@ namespace Managers
         public void PublishFinishGame()
         {
             OnFinish?.Invoke();
+        }
+        
+        public void PublishGameStateChanged(GameState gameState)
+        {
+            OnGameStateChanged?.Invoke(gameState);
         }
     }
 }
