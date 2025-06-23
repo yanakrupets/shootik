@@ -25,6 +25,7 @@ namespace Managers
         private readonly PoolManager _poolManager;
         private readonly GraphicController _graphicController;
         private readonly CanvasController _canvasController;
+        private readonly SaveController _saveController;
         private readonly LevelGenerator _levelGenerator;
         private readonly InputActionAsset _inputActionsAsset;
         private readonly GameStateMachine _gameStateMachine;
@@ -46,11 +47,11 @@ namespace Managers
         [Inject]
         public GameManager(
             AimWeightData aimWeightData, 
-            GraphicData graphicData, 
             EventManager eventManager, 
             PoolManager poolManager, 
             GraphicController graphicController,
             CanvasController canvasController, 
+            SaveController saveController,
             LevelGenerator levelGenerator,
             InputActionAsset inputActionsAsset,
             GameStateMachine gameStateMachine,
@@ -68,6 +69,7 @@ namespace Managers
             _poolManager = poolManager;
             _graphicController = graphicController;
             _canvasController = canvasController;
+            _saveController = saveController;
             _levelGenerator = levelGenerator;
             _inputActionsAsset = inputActionsAsset;
             _gameStateMachine = gameStateMachine;
@@ -86,6 +88,8 @@ namespace Managers
             _eventManager.OnStart += StartGame;
             _eventManager.OnFinish += FinishGame;
             _eventManager.OnItemShot += ItemShooted;
+
+            _scoreModel.OnSave += _saveController.Save;
             
             _escapeAction = _inputActionsAsset.FindAction("UI/Escape");
             if (_escapeAction == null)
@@ -103,6 +107,7 @@ namespace Managers
             _pauseMenuCanvasModel.View.MenuButton.onClick.AddListener(FinishGame);
             _educationCanvasModel.View.MenuButton.onClick.AddListener(OpenMenu);
             
+            _scoreModel.UpdateScore(_saveController.LoadInt(SaveConstants.BestScore));
             _canvasController.Open(CanvasType.Menu);
         }
         
@@ -110,9 +115,14 @@ namespace Managers
         {
             if (_eventManager != null)
             {
-                _eventManager.OnStart += StartGame;
+                _eventManager.OnStart -= StartGame;
                 _eventManager.OnFinish -= FinishGame;
                 _eventManager.OnItemShot -= ItemShooted;
+            }
+
+            if (_scoreModel != null)
+            {
+                _scoreModel.OnSave -= _saveController.Save;
             }
             
             if (_escapeAction != null)
@@ -130,6 +140,7 @@ namespace Managers
             _resultCanvasModel.View.MenuButton.onClick.RemoveListener(OpenMenu);
             _pauseMenuCanvasModel.View.ContinueButton.onClick.RemoveListener(ContinueGame);
             _pauseMenuCanvasModel.View.MenuButton.onClick.RemoveListener(FinishGame);
+            _educationCanvasModel.View.MenuButton.onClick.AddListener(OpenMenu);
         }
         
         private void StartGame()

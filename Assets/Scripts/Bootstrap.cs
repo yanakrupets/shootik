@@ -125,8 +125,6 @@ public class Bootstrap : MonoBehaviour
         
         var educationCanvasModel = DiFactory.Create<EducationCanvasModel>();
         DiContainer.Bind(educationCanvasModel);
-        
-        _initializables.Add(scoreModel);
     }
 
     private void BindManagersAndControllers()
@@ -140,6 +138,9 @@ public class Bootstrap : MonoBehaviour
         
         var canvasController = DiFactory.Create<CanvasController>();
         DiContainer.Bind(canvasController);
+        
+        var saveController = DiFactory.Create<SaveController>();
+        DiContainer.Bind(saveController);
         
         var gameStateMachine = DiFactory.Create<GameStateMachine>();
         DiContainer.Bind(gameStateMachine);
