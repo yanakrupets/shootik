@@ -6,8 +6,6 @@ public class LandscapeItem : ShootableItem
 {
     private SpriteRenderer _spriteRenderer;
 
-    // serialized particle system
-
     protected virtual void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();

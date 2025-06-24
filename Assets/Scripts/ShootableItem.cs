@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public abstract class ShootableItem : MonoBehaviour, IPointerClickHandler
 {
-    // shot sound
-    
     [Inject] protected EventManager EventManager;
 
     public bool IsShot { get; set; }

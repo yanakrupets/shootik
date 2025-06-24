@@ -17,6 +17,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private AimWeightData aimWeightData;
     [SerializeField] private ColliderData colliderData;
     [SerializeField] private GraphicData graphicData;
+    [SerializeField] private SoundData soundData;
     
     [Space]
     [SerializeField] private InputActionAsset inputActionsAsset;
@@ -37,6 +38,9 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenuCanvas;
     [SerializeField] private Education educationCanvas;
     [SerializeField] private Result resultCanvas;
+    
+    [Header("Audio source")]
+    [SerializeField] private AudioSource audioSource;
     
     private readonly List<IInitializable> _initializables = new();
     private readonly List<IDisposable> _disposables = new();
@@ -79,6 +83,7 @@ public class Bootstrap : MonoBehaviour
         DiContainer.Bind(aimWeightData);
         DiContainer.Bind(colliderData);
         DiContainer.Bind(graphicData);
+        DiContainer.Bind(soundData);
         
         DiContainer.Bind(inputActionsAsset);
     }
@@ -132,6 +137,10 @@ public class Bootstrap : MonoBehaviour
         DiFactory.Create<AnimationController>();
         
         DiContainer.Bind(new EventManager());
+        DiContainer.Bind(audioSource);
+        
+        var soundController = DiFactory.Create<SoundController>();
+        DiContainer.Bind(soundController);
         
         var graphicController = DiFactory.Create<GraphicController>();
         DiContainer.Bind(graphicController);

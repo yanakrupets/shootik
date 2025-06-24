@@ -26,6 +26,7 @@ namespace Managers
         private readonly GraphicController _graphicController;
         private readonly CanvasController _canvasController;
         private readonly SaveController _saveController;
+        private readonly SoundController _soundController;
         private readonly LevelGenerator _levelGenerator;
         private readonly InputActionAsset _inputActionsAsset;
         private readonly GameStateMachine _gameStateMachine;
@@ -52,6 +53,7 @@ namespace Managers
             GraphicController graphicController,
             CanvasController canvasController, 
             SaveController saveController,
+            SoundController soundController,
             LevelGenerator levelGenerator,
             InputActionAsset inputActionsAsset,
             GameStateMachine gameStateMachine,
@@ -70,6 +72,7 @@ namespace Managers
             _graphicController = graphicController;
             _canvasController = canvasController;
             _saveController = saveController;
+            _soundController = soundController;
             _levelGenerator = levelGenerator;
             _inputActionsAsset = inputActionsAsset;
             _gameStateMachine = gameStateMachine;
@@ -163,6 +166,8 @@ namespace Managers
 
         private void ContinueGame()
         {
+            _soundController.Play(SoundName.UIButton);
+            
             _isPlaying = true;
             _ = AimCycleRoutine();
             PauseGame(false);
@@ -179,6 +184,8 @@ namespace Managers
 
         private void FinishGame()
         {
+            _soundController.Play(SoundName.GameOver);
+            
             PauseGame(false);
             _isPlaying = false;
             StopAllAnimations();
@@ -277,8 +284,7 @@ namespace Managers
         private void ItemShooted(ShootableItem item)
         {
             item.IsShot = true;
-            
-            // play sound
+            PlayShotSound(item);
             if (item is IShotAnimated animatedItem)
             {
                 Play(animatedItem.AnimationData, item.transform, () =>
@@ -312,6 +318,26 @@ namespace Managers
             }
         }
 
+        private void PlayShotSound(ShootableItem item)
+        {
+            Debug.Log("!!!");
+            switch (item)
+            {
+                case EnemyItem enemyItem:
+                    _soundController.Play(SoundName.Enemy);
+                    break;
+                case CitizenItem citizenItem:
+                    _soundController.Play(SoundName.Citizen);
+                    break;
+                case HeartItem heartItem:
+                    _soundController.Play(SoundName.Heart);
+                    break;
+                case LandscapeItem landscapeItem:
+                    _soundController.Play(SoundName.Landscape);
+                    break;
+            }
+        }
+
         private TargetType GetRandomTargetType()
         {
             var randomValue = Random.Range(0, _aimWeightData.TotalWeight);
@@ -330,16 +356,19 @@ namespace Managers
         
         private void OpenEducation()
         {
+            _soundController.Play(SoundName.UIButton);
             _canvasController.Open(CanvasType.Education);
         }
 
         private void OpenMenu()
         {
+            _soundController.Play(SoundName.UIButton);
             _canvasController.Open(CanvasType.Menu);
         }
 
         private void PublishStartGame()
         {
+            _soundController.Play(SoundName.UIButton);
             _eventManager.PublishStartGame();
         }
         

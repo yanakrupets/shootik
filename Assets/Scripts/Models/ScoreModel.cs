@@ -1,8 +1,6 @@
 using System;
 using DI;
-using Interfaces;
 using UI;
-using Unity.VisualScripting;
 
 namespace Models
 {
