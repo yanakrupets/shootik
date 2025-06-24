@@ -25,8 +25,8 @@ namespace Controllers
         {
             _enemySet = _graphicData.EnemySpriteSets[Random.Range(0, _graphicData.EnemySpriteSets.Length)];
         }
-        
-        public IEnumerable<OverlapGraphic> GetOverlapGraphic(LandscapeLayer layer) =>
+
+        public IEnumerable<OverlapGraphic> GetOverlapGraphic(LandscapeLayer layer) => 
             _graphicData.OverlapGraphics
                 .Where(overlap => (overlap.LandscapeLayer & (LandscapeLayerFlags)layer) != 0);
 

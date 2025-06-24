@@ -17,7 +17,9 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 3
     animationData:
-    - <MoveDuration>k__BackingField: 1
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0, y: 0.2}
       <EndPosition>k__BackingField: {x: 0, y: 1.5}
       <MoveStartEase>k__BackingField: 21
@@ -33,9 +35,9 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
       <IntervalDuration>k__BackingField: 1
-      <AnimationType>k__BackingField: 1
-    - <MoveDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: -0.3, y: 0.5}
       <EndPosition>k__BackingField: {x: -0.8, y: 0.5}
       <MoveStartEase>k__BackingField: 21
@@ -51,9 +53,9 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
       <IntervalDuration>k__BackingField: 1
-      <AnimationType>k__BackingField: 2
-    - <MoveDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0.3, y: 0.5}
       <EndPosition>k__BackingField: {x: 0.8, y: 0.5}
       <MoveStartEase>k__BackingField: 21
@@ -69,13 +71,13 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
-      <IntervalDuration>k__BackingField: 1
-      <AnimationType>k__BackingField: 2
   - overlapType: 2
     sprite: {fileID: 21300008, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 2
     animationData:
-    - <MoveDuration>k__BackingField: 1
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0, y: 0.2}
       <EndPosition>k__BackingField: {x: 0, y: 1.2}
       <MoveStartEase>k__BackingField: 21
@@ -91,13 +93,13 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
-      <IntervalDuration>k__BackingField: 1
-      <AnimationType>k__BackingField: 1
   - overlapType: 3
     sprite: {fileID: 21300110, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 3
     animationData:
-    - <MoveDuration>k__BackingField: 1
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0.15, y: 0.2}
       <EndPosition>k__BackingField: {x: 0.1, y: 1}
       <MoveStartEase>k__BackingField: 21
@@ -113,9 +115,9 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
       <IntervalDuration>k__BackingField: 1
-      <AnimationType>k__BackingField: 1
-    - <MoveDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
       <StartPosition>k__BackingField: {x: 0, y: 0.2}
       <EndPosition>k__BackingField: {x: -0.65, y: 0.65}
       <MoveStartEase>k__BackingField: 21
@@ -131,16 +133,1028 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
-      <IntervalDuration>k__BackingField: 1
-      <AnimationType>k__BackingField: 2
   - overlapType: 4
     sprite: {fileID: 21300094, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 4
     animationData: []
   - overlapType: 5
+    sprite: {fileID: 21300140, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 6
+    sprite: {fileID: 21300084, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 7
+    sprite: {fileID: 21300178, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 8
+    sprite: {fileID: 21300154, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.78}
+      <EndPosition>k__BackingField: {x: 0, y: 1.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.78}
+      <EndPosition>k__BackingField: {x: -0.5, y: 0.88}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 20
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 9
+    sprite: {fileID: 21300122, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 10
+    sprite: {fileID: 21300214, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 11
+    sprite: {fileID: 21300052, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.3, y: 1.2}
+      <EndPosition>k__BackingField: {x: -0.3, y: 1.9}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0.3, y: 1.2}
+      <EndPosition>k__BackingField: {x: 0.3, y: 1.8}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 1.2}
+      <EndPosition>k__BackingField: {x: 0, y: 0.6}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 170
+      <EndRotationZ>k__BackingField: 190
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.5, y: 1.2}
+      <EndPosition>k__BackingField: {x: -1.05, y: 1.2}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 20
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0.5, y: 1.2}
+      <EndPosition>k__BackingField: {x: 1.05, y: 1.2}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -15
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 12
+    sprite: {fileID: 1702573737, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 13
+    sprite: {fileID: 21300182, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 14
+    sprite: {fileID: 21300160, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 0.8
+      <StartPosition>k__BackingField: {x: -1, y: 0.4}
+      <EndPosition>k__BackingField: {x: -1.15, y: 1.15}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0.8
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 0.7
+      <StartPosition>k__BackingField: {x: -0.17, y: 0.6}
+      <EndPosition>k__BackingField: {x: -0.1, y: 1.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 1.5, y: 0.18}
+      <EndPosition>k__BackingField: {x: 1.85, y: 0.85}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -15
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 15
+    sprite: {fileID: 21300112, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.4
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.5, y: 0.4}
+      <EndPosition>k__BackingField: {x: -0.5, y: 1.2}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.4
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.5, y: 0.4}
+      <EndPosition>k__BackingField: {x: -1.4, y: 0.4}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 16
+    sprite: {fileID: 21300114, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.6
+      <MoveDuration>k__BackingField: 0.8
+      <StartPosition>k__BackingField: {x: 0.15, y: 0.4}
+      <EndPosition>k__BackingField: {x: 0.9, y: 0.7}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0.8
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -12
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.6
+      <MoveDuration>k__BackingField: 0.8
+      <StartPosition>k__BackingField: {x: 0.15, y: 0.4}
+      <EndPosition>k__BackingField: {x: -0.6, y: 0.8}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0.8
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 17
+    sprite: {fileID: 21300128, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 18
+    sprite: {fileID: 21300198, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 19
+    sprite: {fileID: -2305204071527019509, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.6
+      <MoveDuration>k__BackingField: 0.6
+      <StartPosition>k__BackingField: {x: 0, y: 0.3}
+      <EndPosition>k__BackingField: {x: 0, y: 1}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0.6
+      <StartRotationZ>k__BackingField: 10
+      <EndRotationZ>k__BackingField: -10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 20
+    sprite: {fileID: 21300006, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.3}
+      <EndPosition>k__BackingField: {x: -0.2, y: 1}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 21
+    sprite: {fileID: 21300004, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.2}
+      <EndPosition>k__BackingField: {x: 0.62, y: 0.42}
+      <MoveStartEase>k__BackingField: 1
+      <MoveEndEase>k__BackingField: 1
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -20
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.2}
+      <EndPosition>k__BackingField: {x: -0.2, y: 1}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 22
+    sprite: {fileID: 21300230, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 5
+    animationData: []
+  - overlapType: 23
+    sprite: {fileID: 21300232, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 5
+    animationData: []
+  - overlapType: 24
+    sprite: {fileID: 21300002, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.45}
+      <EndPosition>k__BackingField: {x: 0.65, y: 0.45}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -5
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.45}
+      <EndPosition>k__BackingField: {x: -0.65, y: 0.45}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 25
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 25
+    sprite: {fileID: 21300180, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 26
+    sprite: {fileID: 21300024, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 27
+    sprite: {fileID: 21300026, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 28
+    sprite: {fileID: 21300028, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 29
+    sprite: {fileID: 21300096, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 30
+    sprite: {fileID: 21300098, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 31
+    sprite: {fileID: 21300102, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 32
+    sprite: {fileID: 21300104, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 33
+    sprite: {fileID: 21300106, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 34
+    sprite: {fileID: -1464565168, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 35
+    sprite: {fileID: 194385232, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 36
+    sprite: {fileID: 1451849220, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 38
+    sprite: {fileID: 21300088, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 39
+    sprite: {fileID: 21300090, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 5
+    animationData: []
+  - overlapType: 40
+    sprite: {fileID: 21300092, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 41
+    sprite: {fileID: 21300076, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 0.8
+      <StartPosition>k__BackingField: {x: 0, y: 0.2}
+      <EndPosition>k__BackingField: {x: 0, y: 1}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 42
+    sprite: {fileID: 21300078, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0, y: 0.4}
+      <EndPosition>k__BackingField: {x: 0, y: 1.2}
+      <MoveStartEase>k__BackingField: 32
+      <MoveEndEase>k__BackingField: 33
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.1
+      <MoveDuration>k__BackingField: 1.2
+      <StartPosition>k__BackingField: {x: 0, y: 0.45}
+      <EndPosition>k__BackingField: {x: 1, y: 0.45}
+      <MoveStartEase>k__BackingField: 1
+      <MoveEndEase>k__BackingField: 1
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.1
+      <MoveDuration>k__BackingField: 1.2
+      <StartPosition>k__BackingField: {x: 0, y: 0.45}
+      <EndPosition>k__BackingField: {x: -1, y: 0.45}
+      <MoveStartEase>k__BackingField: 1
+      <MoveEndEase>k__BackingField: 1
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 43
+    sprite: {fileID: -2001510239, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 44
+    sprite: {fileID: 21300202, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 45
+    sprite: {fileID: 21300010, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 46
+    sprite: {fileID: 21300012, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 47
+    sprite: {fileID: 21300014, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 48
+    sprite: {fileID: 21300256, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 49
+    sprite: {fileID: 21300258, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 50
+    sprite: {fileID: 21300042, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 51
+    sprite: {fileID: 21300044, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 52
+    sprite: {fileID: 21300134, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 53
+    sprite: {fileID: 21300136, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.1, y: 0.1}
+      <EndPosition>k__BackingField: {x: 0, y: 0.9}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 54
+    sprite: {fileID: 21300138, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 55
+    sprite: {fileID: 21300082, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 0.8
+      <StartPosition>k__BackingField: {x: -0.012, y: 1.8}
+      <EndPosition>k__BackingField: {x: -0.012, y: 2.8}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 56
+    sprite: {fileID: 363260238, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 57
+    sprite: {fileID: -1236855252, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 58
+    sprite: {fileID: 21300190, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 1
+    animationData: []
+  - overlapType: 59
+    sprite: {fileID: 21300150, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.4
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.03, y: 1.2}
+      <EndPosition>k__BackingField: {x: -0.4, y: 1.4}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 15
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.6
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.02, y: 0.6}
+      <EndPosition>k__BackingField: {x: 0.45, y: 0.6}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -7.5
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 60
+    sprite: {fileID: -1758970209, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.2
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0.02, y: 0.45}
+      <EndPosition>k__BackingField: {x: 0.6, y: 0.45}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 61
+    sprite: {fileID: 21300062, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 2
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 0.6
+      <StartPosition>k__BackingField: {x: 0.03, y: 0.2}
+      <EndPosition>k__BackingField: {x: 0.03, y: 0.95}
+      <MoveStartEase>k__BackingField: 30
+      <MoveEndEase>k__BackingField: 1
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 62
+    sprite: {fileID: 21300262, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 63
+    sprite: {fileID: 21300264, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 64
+    sprite: {fileID: 21300266, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 65
+    sprite: {fileID: 21300120, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.4, y: 4}
+      <EndPosition>k__BackingField: {x: -0.8, y: 5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -1.5, y: 3}
+      <EndPosition>k__BackingField: {x: -2.3, y: 2.48}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 90
+      <EndRotationZ>k__BackingField: 120
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 1.55, y: 2.8}
+      <EndPosition>k__BackingField: {x: 1.6, y: 2}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 200
+      <EndRotationZ>k__BackingField: 190
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 66
+    sprite: {fileID: 21300226, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.65, y: 3}
+      <EndPosition>k__BackingField: {x: -1, y: 3.8}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 7
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.9, y: 2.25}
+      <EndPosition>k__BackingField: {x: -1.9, y: 2.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 75
+      <EndRotationZ>k__BackingField: 80
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.8
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0.3, y: 3}
+      <EndPosition>k__BackingField: {x: 1.4, y: 3.8}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -20
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 67
+    sprite: {fileID: 21300066, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0.4, y: 0.4}
+      <EndPosition>k__BackingField: {x: 1, y: 0.5}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: -7.5
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 1
+      <MoveDuration>k__BackingField: 0.8
+      <StartPosition>k__BackingField: {x: 0.2, y: 2.35}
+      <EndPosition>k__BackingField: {x: 0.2, y: 3}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0.8
+      <StartRotationZ>k__BackingField: 90
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+  - overlapType: 68
+    sprite: {fileID: 21300142, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 69
+    sprite: {fileID: 21300144, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 70
+    sprite: {fileID: 21300146, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 71
     sprite: {fileID: 21300148, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 4
     animationData: []
+  - overlapType: 72
+    sprite: {fileID: 21300148, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 73
+    sprite: {fileID: 21300176, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 74
+    sprite: {fileID: 109800182, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 4
+    animationData: []
+  - overlapType: 75
+    sprite: {fileID: 21300126, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    landscapeLayer: 3
+    animationData:
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.1
+      <MoveDuration>k__BackingField: 1.2
+      <StartPosition>k__BackingField: {x: 0.5, y: 0.5}
+      <EndPosition>k__BackingField: {x: 1.5, y: 0.5}
+      <MoveStartEase>k__BackingField: 1
+      <MoveEndEase>k__BackingField: 1
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 2
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: -0.6, y: 0.5}
+      <EndPosition>k__BackingField: {x: -1.2, y: 1}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 1
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 10
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
+    - <AnimationType>k__BackingField: 1
+      <IntervalDuration>k__BackingField: 0.5
+      <MoveDuration>k__BackingField: 1
+      <StartPosition>k__BackingField: {x: 0.2, y: 0.6}
+      <EndPosition>k__BackingField: {x: 0.2, y: 1.6}
+      <MoveStartEase>k__BackingField: 21
+      <MoveEndEase>k__BackingField: 20
+      <RotateDuration>k__BackingField: 0
+      <StartRotationZ>k__BackingField: 0
+      <EndRotationZ>k__BackingField: 0
+      <ScaleDuration>k__BackingField: 0
+      <StartScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <EndScale>k__BackingField: {x: 0, y: 0, z: 0}
+      <ColorDuration>k__BackingField: 0
+      <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+      <IsLoop>k__BackingField: 0
+      <LoopCount>k__BackingField: 0
+      <LoopType>k__BackingField: 0
   backgroundSprites:
   - {fileID: 21300000, guid: a4fa243ef9771f64bb296e61b4d54881, type: 3}
   - {fileID: 21300000, guid: f6cc67ab8870dda4dbc253117214730e, type: 3}

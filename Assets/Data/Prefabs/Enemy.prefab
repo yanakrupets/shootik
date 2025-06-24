@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1488200054877055725}
   shotAnimation:
+    <AnimationType>k__BackingField: 3
+    <IntervalDuration>k__BackingField: 0
     <MoveDuration>k__BackingField: 0
     <StartPosition>k__BackingField: {x: 0, y: 0}
     <EndPosition>k__BackingField: {x: 0, y: 0}
@@ -151,5 +153,3 @@ MonoBehaviour:
     <IsLoop>k__BackingField: 1
     <LoopCount>k__BackingField: 4
     <LoopType>k__BackingField: 1
-    <IntervalDuration>k__BackingField: 0
-    <AnimationType>k__BackingField: 3

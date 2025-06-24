@@ -8,6 +8,9 @@ namespace Serializable
     [Serializable]
     public class AnimationData
     {
+        [field: SerializeField] public AnimationType AnimationType { get; private set; }
+        [field: SerializeField] public float IntervalDuration { get; private set; }
+        
         [field: Header("Move")]
         [field: SerializeField] public float MoveDuration { get; private set; }
         [field: SerializeField] public Vector2 StartPosition { get; private set; }
@@ -33,9 +36,5 @@ namespace Serializable
         [field: SerializeField] public bool IsLoop { get; private set; }
         [field: SerializeField] public int LoopCount { get; private set; }
         [field: SerializeField] public LoopType LoopType { get; private set; }
-        
-        [field: Space]
-        [field: SerializeField] public float IntervalDuration { get; private set; }
-        [field: SerializeField] public AnimationType AnimationType { get; private set; }
     }
 }
