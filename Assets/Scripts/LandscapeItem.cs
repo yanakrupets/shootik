@@ -25,4 +25,9 @@ public class LandscapeItem : ShootableItem
         transform.localPosition = position;
         _spriteRenderer.sortingLayerName = landscapeLayerName;
     }
+
+    protected override void PerformAttack()
+    {
+        EventManager.PublishItemShot(this);
+    }
 }

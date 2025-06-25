@@ -320,7 +320,6 @@ namespace Managers
 
         private void PlayShotSound(ShootableItem item)
         {
-            Debug.Log("!!!");
             switch (item)
             {
                 case EnemyItem enemyItem:

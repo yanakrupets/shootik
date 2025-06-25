@@ -805,10 +805,6 @@ MonoBehaviour:
       <IsLoop>k__BackingField: 0
       <LoopCount>k__BackingField: 0
       <LoopType>k__BackingField: 0
-  - overlapType: 56
-    sprite: {fileID: 363260238, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 4
-    animationData: []
   - overlapType: 57
     sprite: {fileID: -1236855252, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 1
