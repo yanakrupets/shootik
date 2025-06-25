@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using DI;
 using Enums;
 using Interfaces;
@@ -41,7 +42,7 @@ namespace Managers
 
         private readonly Dictionary<ShootableItem, TargetPlace> _targetPlaces = new();
         private float _currentDelay;
-        private bool _isPlaying;
+        private CancellationTokenSource _aimCycleCts;
         
         private InputAction _escapeAction;
         
@@ -157,8 +158,9 @@ namespace Managers
             _canvasController.Open(CanvasType.Gameplay);
             
             _currentDelay = _timerRange.x;
-            _isPlaying = true;
-            _ = AimCycleRoutine();
+            
+            _aimCycleCts = new CancellationTokenSource();
+            _ = AimCycleRoutine(_aimCycleCts.Token);
             
             _gameStateMachine.ChangeState(GameState.Playing);
             _escapeAction.Enable();
@@ -168,8 +170,9 @@ namespace Managers
         {
             _soundController.Play(SoundName.UIButton);
             
-            _isPlaying = true;
-            _ = AimCycleRoutine();
+            _aimCycleCts = new CancellationTokenSource();
+            _ = AimCycleRoutine(_aimCycleCts.Token);
+            
             PauseGame(false);
             _canvasController.Open(CanvasType.Gameplay);
             
@@ -186,8 +189,11 @@ namespace Managers
         {
             _soundController.Play(SoundName.GameOver);
             
+            _aimCycleCts?.Cancel();
+            _aimCycleCts?.Dispose();
+            _aimCycleCts = null;
+            
             PauseGame(false);
-            _isPlaying = false;
             StopAllAnimations();
             _levelGenerator.Clean();
             
@@ -198,18 +204,21 @@ namespace Managers
             _escapeAction.Disable();
         }
         
-        private async Task AimCycleRoutine()
+        private async Task AimCycleRoutine(CancellationToken ct)
         {
-            while (_isPlaying)
+            while (!ct.IsCancellationRequested)
             {
-                await Task.Delay((int)(_currentDelay * 1000));
-
-                if (!_isPlaying)
+                try
+                {
+                    await Task.Delay((int)(_currentDelay * 1000), ct);
+            
+                    ShowTarget();
+                    _currentDelay = Mathf.Max(_currentDelay * SpeedCoefficient, _timerRange.y);
+                }
+                catch (TaskCanceledException)
+                {
                     return;
-
-                ShowTarget();
-
-                _currentDelay = Mathf.Max(_currentDelay * SpeedCoefficient, _timerRange.y);
+                }
             }
         }
 
@@ -374,7 +383,11 @@ namespace Managers
         private void HandleEscape(InputAction.CallbackContext context)
         {
             _canvasController.Open(CanvasType.PauseMenu);
-            _isPlaying = false;
+            
+            _aimCycleCts?.Cancel();
+            _aimCycleCts?.Dispose();
+            _aimCycleCts = null;
+            
             PauseGame(true);
                 
             _gameStateMachine.ChangeState(GameState.Paused);

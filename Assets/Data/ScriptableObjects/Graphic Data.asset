@@ -141,10 +141,6 @@ MonoBehaviour:
     sprite: {fileID: 21300140, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 4
     animationData: []
-  - overlapType: 6
-    sprite: {fileID: 21300084, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 4
-    animationData: []
   - overlapType: 7
     sprite: {fileID: 21300178, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
     landscapeLayer: 4
@@ -631,7 +627,7 @@ MonoBehaviour:
     animationData: []
   - overlapType: 39
     sprite: {fileID: 21300090, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 5
+    landscapeLayer: 1
     animationData: []
   - overlapType: 40
     sprite: {fileID: 21300092, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
@@ -727,19 +723,19 @@ MonoBehaviour:
     animationData: []
   - overlapType: 45
     sprite: {fileID: 21300010, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 4
+    landscapeLayer: 1
     animationData: []
   - overlapType: 46
     sprite: {fileID: 21300012, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 4
+    landscapeLayer: 1
     animationData: []
   - overlapType: 47
     sprite: {fileID: 21300014, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 4
+    landscapeLayer: 1
     animationData: []
   - overlapType: 48
     sprite: {fileID: 21300256, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 4
+    landscapeLayer: 1
     animationData: []
   - overlapType: 49
     sprite: {fileID: 21300258, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
@@ -759,7 +755,7 @@ MonoBehaviour:
     animationData: []
   - overlapType: 53
     sprite: {fileID: 21300136, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-    landscapeLayer: 2
+    landscapeLayer: 3
     animationData:
     - <AnimationType>k__BackingField: 1
       <IntervalDuration>k__BackingField: 1

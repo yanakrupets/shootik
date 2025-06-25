@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1529393997
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87a7c4321fd50514c8e41d6779a071da, type: 3}
+  m_Sprite: {fileID: 1146510666235300713, guid: 862b40d28afa3c94fbc03f6652069a5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +118,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.42}
+  m_Offset: {x: 0, y: 0.04}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &475519717574384215
@@ -134,19 +134,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotAnimation:
+    <AnimationType>k__BackingField: 4
+    <IntervalDuration>k__BackingField: 0
     <MoveDuration>k__BackingField: 0
     <StartPosition>k__BackingField: {x: 0, y: 0}
     <EndPosition>k__BackingField: {x: 0, y: 0}
+    <MoveStartEase>k__BackingField: 0
+    <MoveEndEase>k__BackingField: 0
     <RotateDuration>k__BackingField: 0
     <StartRotationZ>k__BackingField: 0
     <EndRotationZ>k__BackingField: 0
     <ScaleDuration>k__BackingField: 0.1
     <StartScale>k__BackingField: {x: 1, y: 1, z: 1}
     <EndScale>k__BackingField: {x: 1.2, y: 1.2, z: 1.2}
-    <BlinkDuration>k__BackingField: 0.1
-    <BlinkColor>k__BackingField: {r: 0.2268797, g: 1, b: 0.19811308, a: 1}
+    <ColorDuration>k__BackingField: 0
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
     <IsLoop>k__BackingField: 1
     <LoopCount>k__BackingField: 4
     <LoopType>k__BackingField: 1
-    <IntervalDuration>k__BackingField: 0
-    <AnimationType>k__BackingField: 4
