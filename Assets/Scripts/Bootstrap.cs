@@ -162,6 +162,7 @@ public class Bootstrap : MonoBehaviour
         _initializables.Add(cursorController);
         _initializables.Add(gameManager);
         
+        _disposables.Add(cursorController);
         _disposables.Add(gameManager);
     }
 

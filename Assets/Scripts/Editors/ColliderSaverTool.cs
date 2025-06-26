@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Editors
 {
+#if UNITY_EDITOR
     public class ColliderSaverTool : EditorWindow
     {
         private OverlapType _overlapType;
@@ -120,4 +121,5 @@ namespace Editors
             }
         }
     }
+#endif
 }

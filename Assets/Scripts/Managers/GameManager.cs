@@ -7,8 +7,8 @@ using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using System.Threading.Tasks;
 using Controllers;
+using Cysharp.Threading.Tasks;
 using Models;
 using UnityEngine.InputSystem;
 using static Controllers.AnimationController;
@@ -204,21 +204,14 @@ namespace Managers
             _escapeAction.Disable();
         }
         
-        private async Task AimCycleRoutine(CancellationToken ct)
+        private async UniTask AimCycleRoutine(CancellationToken ct)
         {
             while (!ct.IsCancellationRequested)
             {
-                try
-                {
-                    await Task.Delay((int)(_currentDelay * 1000), ct);
-            
-                    ShowTarget();
-                    _currentDelay = Mathf.Max(_currentDelay * SpeedCoefficient, _timerRange.y);
-                }
-                catch (TaskCanceledException)
-                {
-                    return;
-                }
+                await UniTask.Delay((int)(_currentDelay * 1000), cancellationToken: ct);
+                
+                ShowTarget();
+                _currentDelay = Mathf.Max(_currentDelay * SpeedCoefficient, _timerRange.y);
             }
         }
 

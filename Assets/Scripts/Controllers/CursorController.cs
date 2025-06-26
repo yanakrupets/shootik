@@ -1,3 +1,4 @@
+using System;
 using DI;
 using Enums;
 using Interfaces;
@@ -6,13 +7,13 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class CursorController : IInitializable
+    public class CursorController : IInitializable, IDisposable
     {
         private Texture2D _cursorTexture;
         private Texture2D _aimCursorTexture;
         
         private readonly Vector2 _defaultHotspot = Vector2.zero;
-        private readonly Vector2 _crosshairHotspot = new Vector2(128, 128);
+        private Vector2 _crosshairHotspot;
         
         private readonly EventManager _eventManager;
 
@@ -27,9 +28,17 @@ namespace Controllers
             _eventManager.OnGameStateChanged += ChangeView;
             
             _cursorTexture = Resources.Load<Texture2D>("Sprites/Cursor");
-            _aimCursorTexture = Resources.Load<Texture2D>("Sprites/Cursor_0");
-            
+            _aimCursorTexture = Resources.Load<Texture2D>("Sprites/Cursor_aim");
+
+            if (_aimCursorTexture != null)
+                _crosshairHotspot = new Vector2(_aimCursorTexture.width / 2, _aimCursorTexture.height / 2);
+
             ChangeView(GameState.None);
+        }
+        
+        public void Dispose()
+        {
+            _eventManager.OnGameStateChanged -= ChangeView;
         }
 
         private void ChangeView(GameState gameState)
@@ -37,11 +46,17 @@ namespace Controllers
             switch (gameState)
             {
                 case GameState.Playing:
-                    Cursor.SetCursor(_aimCursorTexture, _crosshairHotspot, CursorMode.Auto);
+                    if (_aimCursorTexture != null)
+                    {
+                        Cursor.SetCursor(_aimCursorTexture, _crosshairHotspot, CursorMode.Auto);
+                    }
                     break;
                 case GameState.Paused:
                 case GameState.None:
-                    Cursor.SetCursor(_cursorTexture, _defaultHotspot, CursorMode.Auto);
+                    if (_cursorTexture != null)
+                    {
+                        Cursor.SetCursor(_cursorTexture, _defaultHotspot, CursorMode.Auto);
+                    }
                     break;
             }
         }
