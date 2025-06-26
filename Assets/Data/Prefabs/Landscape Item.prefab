@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8126629533936745545}
   - component: {fileID: 8307872600074243422}
-  - component: {fileID: 3051214727377132726}
   - component: {fileID: 6054678384232384314}
   m_Layer: 0
   m_Name: Landscape Item
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8274169575291546560}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -4.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -86,61 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3051214727377132726
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8274169575291546560}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.36, y: 0}
-    oldSize: {x: 0.78125, y: 1.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.46875, y: 1.5}
-      - {x: 0.09375, y: 1.5}
-      - {x: 0.03125, y: 1.4375}
-      - {x: 0.03125, y: 1.40625}
-      - {x: -0.28125, y: 0.9375}
-      - {x: -0.28125, y: 0.5625}
-      - {x: -0.15625, y: 0}
-      - {x: 0.21875, y: 0}
-      - {x: 0.5, y: 0.78125}
-      - {x: 0.5, y: 1.46875}
-  m_UseDelaunayMesh: 0
 --- !u!114 &6054678384232384314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,5 +97,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b5b99a4f063a542a5dcaaa49ac61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 8307872600074243422}
-  _collider: {fileID: 3051214727377132726}
